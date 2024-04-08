@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation System</title>
+    <link rel="stylesheet" href="reservation_reception_styles.css"> <!-- Linking to the CSS file -->
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <!-- <div class="logo">Golden Link</div> -->
+            <a href="landing_page.html" class="logo">Golden Link</a> <!-- Hyperlink the logo -->
+            <nav class="nav">
+                <a href="#" class="nav-link">Calendar</a>
+                <a href="#" class="nav-link">Activities</a>
+                <a href="#" class="nav-link">Meals</a>
+                <a href="#" class="nav-link">My profile</a>
+                <a href="appointment_reservation.html" class="nav-button">Appointment</a> <!-- Hyperlink to the appointment reservation page -->
+            </nav>
+        </header>
+
+
+        
+
+        <main class="reservation-container">
+            <h1 class="reservation-title">Reserve your spot</h1>
+
+            <label for="reservation-date" class="reservation-label">Select Reservation Date</label>
+            <select id="reservation-date" class="reservation-select">
+                <option>Select an Option</option>
+            </select>
+
+            <label for="reservation-time" class="reservation-label">Select Reservation Time</label>
+            <select id="reservation-time" class="reservation-select">
+                <!-- <option>Select an Option</option> -->
+                <option value="9:00am - 10:00am">9:00am - 10:00am</option>
+                <option value="10:00am - 11:00am">10:00am - 11:00am</option>
+                <option value="11:00am - 12:00pm">11:00am - 12:00pm</option>
+                <option value="12:00pm - 1:00pm">12:00pm - 1:00pm</option>
+                <option value="1:00pm - 2:00pm">1:00pm - 2:00pm</option>
+                <option value="2:00pm - 3:00pm">2:00pm - 3:00pm</option>
+                <option value="3:00pm - 4:00pm">3:00pm - 4:00pm</option>
+                <option value="4:00pm - 5:00pm">4:00pm - 5:00pm</option>
+            </select>
+
+            <label for="reservation-people" class="reservation-label">Select Number of People</label>
+            <select id="reservation-people" class="reservation-select">
+                <option value="">Select an Option</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="More than 2">More than 2</option>
+            </select>
+
+            <label for="reservation-remarks" class="reservation-label">Remarks</label>
+            <textarea id="reservation-remarks" class="reservation-select"></textarea>
+
+            <button class="reservation-confirm-button">Confirm Appointment</button>
+
+            <p class="reservation-terms">
+                Terms and Condition?
+                <br />
+                believe in produce. Tasty produce. Produce like:
+                <br />
+                <br />
+                Apples. Oranges. Limes. Lemons. Guavas. Carrots. Cucumbers. Jicamas. Cauliflowers. Brussels sprouts.
+                Shallots. Japanese eggplants. Asparagus. Artichokes—Jerusalem artichokes, too. Radishes. Broccoli. Baby
+                broccoli. Broccolini. Bok choy. Scallions. Ginger. Cherries. Raspberries. Cilantro. Parsley. Dill.
+                <br />
+                <br />
+            </p>
+        </main>
+    </div>
+</body>
+</html>
