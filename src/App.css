@@ -1,63 +1,108 @@
 body {
-  background-color: green;
-  font-family: Arial, sans-serif;
-  
+  font-family: 'Raleway', sans-serif;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+}
+
+h1 {
+  font-family: 'Raleway', sans-serif;
 }
 
 .title {
-  color: green;
-  font-size: 52px;
+  color: rgb(50, 114, 10);
+  font-size: 45px;
+  font-family:  'Ondise', sans-serif;
+  padding: 5px 0 0 45px;
+  margin: 25px 0 0 0;
 }
 
 .right {
   text-align: right;
+  margin-right: 15px;
+  margin-top: auto;
+  font-size: 11px;
+  padding: auto;
 }
 
-.prof-font {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: rgb(50, 114, 10);
+  width: 100%;
+}
+
+.nav-list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin-right: auto;
+}
+
+.nav-item {
+  padding: 10px;
+  margin-right: 10px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+#last-item {        
+  margin-right: 0;
+  margin-left: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#white-space div {
+  width: 100%;
+  background-color: white;
+  padding: 50px;
 }
+
+#main {
+  width: 100%;
+  background-color: rgb(175, 174, 174);
+  margin: 50px 0;
+  padding: 165px;
+}
+
+#main h1 {
+  padding: auto;
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+
+#appointment {
+  background-color:  rgb(50, 114, 10);
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+#appointment:hover {
+  background-color:rgb(10, 160, 10);
+}
+
+footer {
+  background-color:  rgb(50, 114, 10);
+}
+
+footer ul {
+  
+  list-style-type: none;
+  display: flex;
+  padding: auto;
+  margin: auto;
+}
+
+footer ul li {
+  padding: 50px;
+  margin-right: auto;
+  color: white;
+}
+
+
