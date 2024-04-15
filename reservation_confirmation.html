@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="reservation_confirmation_styles.css" rel="stylesheet">
+    <title>Reservation Confirmation</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <!-- <div class="logo">Golden Link</div> -->
+            <a href="landing_page.html" class="logo">Golden Link</a> <!-- Hyperlink the logo -->
+            <nav class="nav">
+                <a href="#" class="nav-link">Calendar</a>
+                <a href="#" class="nav-link">Activities</a>
+                <a href="#" class="nav-link">Meals</a>
+                <a href="#" class="nav-link">My profile</a>
+                <a href="reservation_reception.html" class="nav-button">Appointment</a> <!-- Hyperlink to the appointment reservation page -->
+            </nav>
+        </header>
+
+        <main class="reservation-container">
+            <h1 class="confirmation-title">Confirm Reservation</h1>
+
+
+    <div class="reservation-confirmation">
+        <h1 class="title">Reservation Details</h1>
+        <div class="reservation-info">
+            <div class="info-item">
+                <span class="info-label">Date:</span>
+                <span class="info-value">id = "confirmation-date"</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Time:</span>
+                <span class="info-value">id = "confirmation-time"</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Number of People:</span>
+                <span class="info-value">id = "confirmation-people"</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Remarks:</span>
+                <span class="info-value">id = "confirmation-remarks"</span>
+            </div>
+        </div>
+
+        <a href="reservation_reception.html" class="confirm-button">Complete Appointment</a>
+        <!-- <span class="v662_87">Edit Appointment</span> -->
+        <a href="#" class="edit-button">Edit Appointment</a>
+
+        <p class="terms-and-condition">Terms and Condition?<br>
+        believe in produce. Tasty produce. Produce like:<br>
+        Apples. Oranges. Limes. Lemons. Guavas. Carrots. Cucumbers. Jicamas. Cauliflowers. Brussels sprouts.<br>
+        Shallots. Japanese eggplants. Asparagus. Artichokes—Jerusalem artichokes, too. Radishes. Broccoli.<br>
+        Baby broccoli. Broccolini. Bok choy. Scallions. Ginger. Cherries. Raspberries. Cilantro.<br>
+        Parsley. Dill.<br>
+        What are we forgetting?<br>
+        Oh! Onions. Yams. Avocados. Lettuce. Arugula (to some, “rocket”). Persian cucumbers, in addition to aforementioned “normal” cucumbers.<br>
+        Artichokes. Zucchinis. Pumpkins. Squash (what some cultures call pumpkins). Sweet potatoes and potato-potatoes.<br>
+        Jackfruit. Monk fruit. Fruit of the Loom. Fruits of our labor (this website). Sorrel. Pineapple.<br>
+        Mango. Gooseberries. Blackberries. Tomatoes. Heirloom tomatoes. Beets. Chives. Corn. Endive.<br>
+        Escarole, which, we swear, we’re vendors of organic produce, but if you asked us to describe what escaroles are...</p>
+    </div>
+
+
+
+    <script>
+        // Retrieve data from localStorage
+        const date = localStorage.getItem('reservationDate');
+        const time = localStorage.getItem('reservationTime');
+        const people = localStorage.getItem('reservationPeople');
+        const remarks = localStorage.getItem('reservationRemarks');
+    
+        
+        // Display data on confirmation page
+        document.getElementById('confirmation-date').textContent = date;
+        document.getElementById('confirmation-time').textContent = time;
+        document.getElementById('confirmation-people').textContent = people;
+        document.getElementById('confirmation-remarks').textContent = remarks;
+
+        //clear localStorage after retrieving data
+        localStorage.removeItem('reservationDate');
+        localStorage.removeItem('reservationTime');
+        localStorage.removeItem('reservationPeople');
+        localStorage.removeItem('reservationRemarks');
+
+        </script>
+
+        
+</body>
+
+</html>
