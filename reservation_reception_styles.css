@@ -70,6 +70,7 @@
     font-weight: 600;
     white-space: nowrap;
     padding: 17px 20px;
+    text-decoration: none; /* no underline */
 }
 
 .reservation-container {
@@ -147,6 +148,7 @@
     justify-content: center;
     margin-top: 25px;
     padding: 23px 10px;
+    text-decoration: none; /* no underline */
 }
 
 .reservation-terms {
