@@ -4,78 +4,96 @@ body {
   width: 100%;
 }
 
-.container {
+.header {
+  align-self: stretch;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
+  gap: 20px;
+  margin-top: 7px;
 }
+
 
 h1 {
   font-family: 'Raleway', sans-serif;
 }
 
-.title {
-  color: rgb(50, 114, 10);
-  font-size: 45px;
-  font-family:  'Ondise', sans-serif;
-  padding: 5px 0 0 45px;
-  margin: 25px 0 0 0;
+.logo {
+  color: #426b1f;
+  letter-spacing: -0.32px;
+  flex-grow: 1;
+  margin: auto 0;
+  font: 500 32px/100% Newsreader, sans-serif;
+  text-decoration: none; /* Remove default underline */
 }
 
-.right {
-  text-align: right;
-  margin-right: 15px;
-  margin-top: auto;
-  font-size: 11px;
-  padding: auto;
-}
-
-.navbar {
+.nav {
+  align-items:center;
   display: flex;
-  background-color: rgb(50, 114, 10);
+  gap: 20px;
+  font-size: 16px;
+  color: #000;
+  font-weight: 400;
+  text-align: center;
+  line-height: 130%;
+}
+
+@media (max-width: 991px) {
+  .nav {
+      flex-wrap: wrap;
+  }
+}
+
+.nav-link {
+  font-family: Inter, sans-serif;
+  align-self: stretch;
+  margin: auto 0;
+  text-decoration: none; /* remove default underline */
+}
+
+.nav-button {
+  font-family: Inter, sans-serif;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #426b1f;
+  align-self: stretch;
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 17px 20px;
+  text-decoration: none; /* no underline */
+}
+
+#greenSpace {
   width: 100%;
+  background-color: #426b1f;
+  margin-top: 6px;
+  padding: 40px;
 }
 
-.nav-list {
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-  margin-right: auto;
-}
-
-.nav-item {
-  padding: 10px;
-  margin-right: 10px;
-  color: white;
-}
-
-#last-item {        
-  margin-right: 0;
-  margin-left: auto;
-}
-
-#white-space div {
+#whiteSpace {
   width: 100%;
   background-color: white;
-  padding: 50px;
+  padding: 5px;
 }
 
 #main {
   width: 100%;
-  background-color: rgb(175, 174, 174);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://img.huffingtonpost.com/asset/5bb675e7250000940039a5e0.jpeg?ops=scalefit_720_noupscale');
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 50px 0;
-  padding: 165px;
+  padding: 180px;
 }
 
 #main h1 {
   padding: auto;
   margin-top: auto;
   margin-bottom: 10px;
+  color: white;
 }
 
 #appointment {
-  background-color:  rgb(50, 114, 10);
+  background-color: #426b1f;
   color: white;
   font-size: 20px;
   padding: 10px 20px;
@@ -88,7 +106,7 @@ h1 {
 }
 
 footer {
-  background-color:  rgb(50, 114, 10);
+  background-color:#426b1f;
 }
 
 footer ul {
@@ -106,18 +124,3 @@ footer ul li {
 }
 
 
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
