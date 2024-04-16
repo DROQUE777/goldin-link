@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Goldin Link</title>
   </head>
   <body>
@@ -28,7 +29,7 @@
 
     <div id="main">
       <h1>Goldin Link ~ Bridging Hearts, Connecting Generations</h1>
-      <a href="reservation_reception.html"><button id="appointment">Scehdule An Appointment!</button></a>
+      <button id="appointment">Scehdule An Appointment!</button>
     </div>
     
     <div id="whiteSpace">
@@ -54,7 +55,7 @@
   // Add a click event listener to the button
   button.addEventListener("click", function() {
       // Redirect to another HTML file
-      window.location.href = 'reserveration_reception.html';
+      window.location.href = 'reservation_reception.html';
   });
 </script>
 
