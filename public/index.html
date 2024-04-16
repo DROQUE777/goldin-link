@@ -24,7 +24,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Goldin Link</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -40,48 +40,46 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-    <div class="container">
-      <h1 class="title prof-font">Goldin Link</h1>
+    <header class="container">
+      <h1 class="title">Goldin Link</h1>
       <div class="right">
         <p>Call Us (***)-***-****</p>
         <p>Email Us: FakeAccount@gmail.com</p>
       </div>
+    </header>
+
+    
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li class="nav-item">Home</li>
+        <li class="nav-item">Calendar</li>
+        <li class="nav-item">Events & Activities</li>
+        <li class="nav-item">Appointment</li>
+        <li class="nav-item" id = "last-item">Login</li>
+      </ul>
+    </nav>
+    
+
+    <div id="whiteSpace">
+      <div></div>
     </div>
 
-    <nav>
-      <div>
-        <ul>
-          <li>Home</li>
-          <li>Calendar</li>
-          <li>Events & Activities</li>
-          <li>Appointment</li>
-          <li>Login</li>
-        </ul>
-      </div>
-    </nav>
-
-    <div id="whiteSpace"></div>
-
-    <div>
+    <div id="main">
       <h1>Goldin Link ~ Bridging Hearts, Connecting Generations</h1>
-      <button>Scehdule An Appointment!</button>
+      <button id="appointment">Scehdule An Appointment!</button>
     </div>
     
-    <div id="whiteSpace"></div>
+    <div id="whiteSpace">
+      <div></div>
+    </div>
 
     <footer>
-      <p>Location
-        <ul><li>Address Here</li></ul>
-      </p>
-      <p>Call Us
-        <ul><li>(***)***-****</li></ul>
-      </p>
-      <p>Email Us
-        <ul><li>FakeAccount@gmail.com</li></ul>
-      </p>
-      <p>Hours
-        <ul><li>Open 24/7</li></ul>
-      </p>
+      <ul>
+        <li>Location: Address Here</li>
+        <li>Phone: (***)***-****</li>
+        <li>Email: FakeAccount@gmail.com</li>
+        <li>Hours: Open 24/7</li>
+      </ul>
     </footer>
   </body>
 </html>
