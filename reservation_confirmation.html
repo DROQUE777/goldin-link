@@ -6,6 +6,7 @@
     <link href="reservation_confirmation_styles.css" rel="stylesheet">
     <title>Reservation Confirmation</title>
 </head>
+
 <body>
     <div class="container">
         <header class="header">
@@ -20,6 +21,8 @@
             </nav>
         </header>
 
+
+
         <main class="reservation-container">
             <h1 class="confirmation-title">Confirm Reservation</h1>
 
@@ -29,25 +32,26 @@
         <div class="reservation-info">
             <div class="info-item">
                 <span class="info-label">Date:</span>
-                <span class="info-value">id = "confirmation-date"</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">Time:</span>
-                <span class="info-value">id = "confirmation-time"</span>
+                <span class="info-value" id="confirmation-date"></span>
             </div>
             <div class="info-item">
                 <span class="info-label">Number of People:</span>
-                <span class="info-value">id = "confirmation-people"</span>
+                <span class="info-value" id = "confirmation-people"></span>
             </div>
             <div class="info-item">
+                <span class="info-label">Time:</span>
+                <span class="info-value" id = "confirmation-time"></span>
+            </div>
+
+            <div class="info-item">
                 <span class="info-label">Remarks:</span>
-                <span class="info-value">id = "confirmation-remarks"</span>
+                <span class="info-value" id = "confirmation-remarks"></span>
             </div>
         </div>
 
-        <a href="reservation_reception.html" class="confirm-button">Complete Appointment</a>
+        <a href="#" class="confirm-button">Complete Appointment</a>
         <!-- <span class="v662_87">Edit Appointment</span> -->
-        <a href="#" class="edit-button">Edit Appointment</a>
+        <a href="reservation_reception.html" class="edit-button">Edit Appointment</a>
 
         <p class="terms-and-condition">Terms and Condition?<br>
         believe in produce. Tasty produce. Produce like:<br>
@@ -63,31 +67,38 @@
         Escarole, which, we swear, we’re vendors of organic produce, but if you asked us to describe what escaroles are...</p>
     </div>
 
-
-
     <script>
         // Retrieve data from localStorage
-        const date = localStorage.getItem('reservationDate');
-        const time = localStorage.getItem('reservationTime');
-        const people = localStorage.getItem('reservationPeople');
-        const remarks = localStorage.getItem('reservationRemarks');
-    
-        
-        // Display data on confirmation page
-        document.getElementById('confirmation-date').textContent = date;
-        document.getElementById('confirmation-time').textContent = time;
-        document.getElementById('confirmation-people').textContent = people;
-        document.getElementById('confirmation-remarks').textContent = remarks;
+        window.onload = function() {
+            // var reservationDate = localStorage.getItem('reservationDate');
+            // var reservationTime = localStorage.getItem('reservationTime');
+            // var reservationPeople = localStorage.getItem('reservationPeople');
+            // var reservationRemarks = localStorage.getItem('reservationRemarks');
 
-        //clear localStorage after retrieving data
-        localStorage.removeItem('reservationDate');
-        localStorage.removeItem('reservationTime');
-        localStorage.removeItem('reservationPeople');
-        localStorage.removeItem('reservationRemarks');
+            const reservationDate = localStorage.getItem('reservationDate');
+            const reservationTime = localStorage.getItem('reservationTime');
+            const reservationPeople = localStorage.getItem('reservationPeople');
+            const reservationRemarks = localStorage.getItem('reservationRemarks');
 
-        </script>
+            // Display data on confirmation page
+            document.getElementById('confirmation-date').textContent = reservationDate || 'No date selected';
+            document.getElementById('confirmation-time').textContent = reservationTime || 'No time selected';
+            document.getElementById('confirmation-people').textContent = reservationPeople || 'No people selected';
+            document.getElementById('confirmation-remarks').textContent = reservationRemarks;
 
+            // Clear localStorage after retrieving data
+            // localStorage.removeItem('reservationDate');
+            // localStorage.removeItem('reservationTime');
+            // localStorage.removeItem('reservationPeople');
+            // localStorage.removeItem('reservationRemarks');
+
+            localStorage.clear(); //optionally clear all local storage
+        }
+
+    </script>
         
 </body>
-
+<footer class="footer">
+    <p>&copy; Call Us: (***) - *** - ****  /  Email Us: fakeaccount@goldenlink.com</p>
+</footer>
 </html>
