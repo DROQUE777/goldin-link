@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="App.css"/>  
+    <title>Patient Information</title>
+  </head>
+
+  <body>
+    <main class="container"  style="max-width: 600px; margin: 20px auto; padding: 90px; border: 1px solid #426b1f;
+    border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <h1 style="display: flex; justify-content: center; align-items:center; margin: 10px auto; font: 600 36px/130% Inter, sans-serif;">Patient Information</h1>
+        <section id="medical"> <h3 style="display: flex; justify-content: center; align-items:center; margin: 6px auto;">Medical Information</h3>
+            <label for="allergies" class="allergies-label"><strong>Allergies</strong></label>
+            <textarea id="allergies" class="allergies-select"></textarea>
+
+            <label for="chronic-conditions" class="chronic-conditions-label"><strong>Chronic Conditions</strong></label>
+            <textarea id="chronic-conditions" class="chronic-conditions-select"></textarea>
+
+            <label for="past-surgeries" class="past-surgeries-label"><strong>Past Surgeries</strong></label>
+            <textarea id="past-surgeries" class="past-surgeries-select"></textarea>
+            <label for="medication" class="medication-label"><strong>Medication</strong></label>
+            <textarea id="medication" class="medication-label"></textarea>
+
+            <label for="care-plan" class="care-plan-label"><strong>Care Plan</strong></label>
+            <textarea placeholder="Care Preferences (dietary, activities, etc.)" id="care-plan" class="preferences-select"></textarea>
+            <textarea placeholder="Mobile Assistance Needs" id="care-plan" class="mobile-assistance-select"></textarea>
+            <textarea placeholder="Assistance with Daily Activites(bathing, dressing, eating, etc.)" id="care-plan" class="daily-assistance-select"></textarea>
+            <textarea placeholder="Special Medical Equipment Needs (e.g., oxygen, catheter)" id="care-plan" class="medical-e-select"></textarea>
+            <label for="healthcare-providers" class="healthcare-providers-label"><strong>Healthcare Providers</strong></label>
+            <textarea placeholder="Primary Care Physician's Information" id="healthcare-providers" class="physician-select"></textarea>
+            <textarea placeholder="Specialist Doctors" id="healthcare-providers" class="specialist-select"></textarea>
+            <textarea placeholder="Therapists" id="healthcare-providers" class="therapist-select"></textarea>
+            <textarea placeholder="Pharmacy Information" id="healthcare-providers" class="pharmacy-select"></textarea>
+        </section>
+
+        <div class="two-buttons">
+          <a href="personalInfo.html"><button>Previous</button></a>
+          <a href="insurance_Billing.html"><button>Next</button></a>
+          <button id="save-info">Save</button>
+        </div>
+
+    </main>
+
+  </body>
+</html>
+
+<style>
+  
+  a {
+    text-decoration: none;
+
+  }
+
+  .two-buttons {
+    display: flex;
+    padding: 15px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .two-buttons button {
+    font-size: 20px;
+    padding: 12px 24px;
+    height: auto;
+    display: flex;
+    margin: 30px 14px;
+    align-items: center;
+    background-color:#426b1f;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+
+  }
+
+  label {
+    display: inline-block; 
+    margin-bottom: 13px;
+    margin-top: 5px;
+  }
+
+  textarea {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #426b1f;
+    border-radius: 4px;
+    min-height: 10px;
+    resize: none;
+    margin: 6px auto;
+  }
+
+  select{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    min-height: 10px;
+    margin: 6px auto;
+  }
+
+  body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('https://img.huffingtonpost.com/asset/5bb675e7250000940039a5e0.jpeg?ops=scalefit_720_noupscale');
+  background-size: cover;
+  background-repeat: no-repeat;
+  }
+
+  .container {
+    background-color: white;
+  }
+</style>

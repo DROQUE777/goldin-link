@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="App.css"/>  
+    <title>Display Patient Information</title>
+  </head>
+
+  <body>
+   
+    <main class="container" style="max-width: 600px; margin: 20px auto; padding: 90px; border: 1px solid #426b1f;
+    border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+     <nav class="add-bar">
+        <a href="personalInfo.html"><button class="add-button">Add New Profile</button></a>
+    </nav>
+    <h1 style="display: flex; justify-content: center; align-items:center; margin: 10px auto; font: 600 36px/130% Inter, sans-serif;">Patient Information</h1>
+
+    <table class="contact-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email</th>
+                <th>Caregiver</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a style="text-decoration:none; color: black;" href="patientInfo.html">John Doe</a></td>
+                <td>123-456-7890</td>
+                <td>john.doe@example.com</td>
+                <td>Diego</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>987-654-3210</td>
+                <td>jane.smith@example.com</td>
+                <td>Kent</td>
+            </tr>
+
+            <tr>
+                <td>John Doe</td>
+                <td>123-456-7890</td>
+                <td>john.doe@example.com</td>
+                <td>Billy</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>987-654-3210</td>
+                <td>jane.smith@example.com</td>
+                <td>Michael</td>
+            </tr>
+
+            <tr>
+                <td>John Doe</td>
+                <td>123-456-7890</td>
+                <td>john.doe@example.com</td>
+                <td>Diego</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>987-654-3210</td>
+                <td>jane.smith@example.com</td>
+                <td>Kent</td>
+            </tr>
+
+            <tr>
+                <td>John Doe</td>
+                <td>123-456-7890</td>
+                <td>john.doe@example.com</td>
+                <td>Billy</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>987-654-3210</td>
+                <td>jane.smith@example.com</td>
+                <td>Micahael</td>
+            </tr>
+            <tr>
+                <td>John Doe</td>
+                <td>123-456-7890</td>
+                <td>john.doe@example.com</td>
+                <td>Not Assigned Yet</td>
+            </tr>
+        
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+    
+    
+    
+    </main>
+  </body>
+</html>
+
+<style>
+
+.add-bar {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    height: 100%;
+    align-items: flex-start; /* Center items vertically */
+    padding: 10px 20px; /* Padding around navbar */
+}
+
+.add-button {
+    text-decoration: none; /* Remove underline */
+    color: black; /* Text color */
+    padding: 10px 15px; /* Padding around button */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: rgb(228, 221, 221); /* Button background color */
+    cursor: pointer; /* Cursor pointer on hover */
+    margin: auto;
+}
+
+.nav-button:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+}
+
+.contact-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.contact-table th, 
+.contact-table td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.contact-table th {
+    background-color: #f2f2f2; /* Light gray background for header */
+}
+
+.contact-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternate row background color */
+}
+
+.contact-table tbody tr:hover {
+    background-color: #e6e6e6; /* Hovered row background color */
+}
+
+  body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('https://img.huffingtonpost.com/asset/5bb675e7250000940039a5e0.jpeg?ops=scalefit_720_noupscale');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+
+  .container {
+    background-color: white;
+  }
+</style>

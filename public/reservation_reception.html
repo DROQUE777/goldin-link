@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Form</title>
+    <link rel="stylesheet" href="reservation_reception_styles.css"> <!-- Linking to the CSS file -->
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <!-- <div class="logo">Golden Link</div> -->
+            <a href="landing_page.html" class="logo">Golden Link</a> <!-- Hyperlink the logo -->
+            <nav class="nav">
+                <a href="#" class="nav-link">Calendar</a>
+                <a href="#" class="nav-link">Activities</a>
+                <a href="#" class="nav-link">Meals</a>
+                <a href="#" class="nav-link">My profile</a>
+                <a href="reservation_reception.html" class="nav-button">Appointment</a> <!-- Hyperlink to the appointment reservation page -->
+            </nav>
+        </header>
+
+
+        
+
+        <main class="reservation-container">
+            <h1 class="reservation-title">Reserve your spot</h1>
+
+            <label for="reservation-date" class="reservation-label">Select Reservation Date</label>
+            <!-- <select id="reservation-date" class="reservation-select">
+                <option>Select an Option</option>
+            </select> -->
+            <input type="date" id="reservation-date" class="reservation-select">
+            <div id="selected-date"></div>
+
+
+            <label for="reservation-time" class="reservation-label">Select Reservation Time</label>
+            <select id="reservation-time" class="reservation-select">
+                <option value="">Select an Option</option>
+                <option value="9:00am - 10:00am">9:00am - 10:00am</option>
+                <option value="10:00am - 11:00am">10:00am - 11:00am</option>
+                <option value="11:00am - 12:00pm">11:00am - 12:00pm</option>
+                <option value="12:00pm - 1:00pm">12:00pm - 1:00pm</option>
+                <option value="1:00pm - 2:00pm">1:00pm - 2:00pm</option>
+                <option value="2:00pm - 3:00pm">2:00pm - 3:00pm</option>
+                <option value="3:00pm - 4:00pm">3:00pm - 4:00pm</option>
+                <option value="4:00pm - 5:00pm">4:00pm - 5:00pm</option>
+            </select>
+
+            <label for="reservation-people" class="reservation-label">Select Number of People</label>
+            <select id="reservation-people" class="reservation-select">
+                <option value="">Select an Option</option>
+                <option value="Single (1 person)">Single (1 person)</option>
+                <option value="Group (2 people)">Group (2 people)</option>
+                <option value="Group (3 or more people)">Group (3 or more people)</option>
+            </select>
+
+            <label for="reservation-remarks" class="reservation-label">Remarks</label>
+            <textarea id="reservation-remarks" class="reservation-select"></textarea>
+
+
+            <!-- <button id="confirm-button" class="reservation-confirm-button">Confirm Appointment</button> -->
+            <!-- <a href="reservation_confirmation.html" class="reservation-confirm-button">Confirm Appointment</a>  -->
+            <a href="reservation_confirmation.html" class="reservation-confirm-button" id="confirm-link">Confirm Appointment</a>
+
+            <p class="reservation-terms">
+                Terms and Condition?
+                <br />
+                believe in produce. Tasty produce. Produce like:
+                <br />
+                <br />
+                Apples. Oranges. Limes. Lemons. Guavas. Carrots. Cucumbers. Jicamas. Cauliflowers. Brussels sprouts.
+                Shallots. Japanese eggplants. Asparagus. Artichokes—Jerusalem artichokes, too. Radishes. Broccoli. Baby
+                broccoli. Broccolini. Bok choy. Scallions. Ginger. Cherries. Raspberries. Cilantro. Parsley. Dill.
+                <br />
+                <br />
+            </p>
+        </main>
+    </div>
+
+
+    <script>
+        const currentDate = new Date();
+        const tomorrow = new Date(currentDate.getTime() + 86400000); // 86400000 is the number of milliseconds in a day
+        const fillDateOptions = () => {
+            const select = document.getElementById("reservation-date");
+            const today = new Date();
+            const maxDays = 100; // Number of days to generate options for
+            for (let day = 0; day <= maxDays; day++) {
+                const futureDate = new Date(today);
+                futureDate.setDate(today.getDate() + day);
+                const optionValue = futureDate.toISOString().split('T')[0];
+                const optionText = futureDate.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                const optionElement = document.createElement("option");
+                optionElement.value = optionValue;
+                optionElement.textContent = optionText;
+                select.appendChild(optionElement);
+            }
+        }
+    
+        // Call fillDateOptions to populate the select on page load
+        //window.onload = fillDateOptions;
+        window.onload = function() { //
+            //fillDataOptions(); //
+        }
+    
+    
+        //
+        document.getElementById('confirm-link').addEventListener('click', function(event) {
+            event.preventDefault(); //prevent the form from submitting normally
+    
+            //get the values from the input fields
+            const reservationDate = document.getElementById('reservation-date').value;
+            const reservationTime = document.getElementById('reservation-time').value;
+            const reservationPeople = document.getElementById('reservation-people').value;
+            const reservationRemarks = document.getElementById('reservation-remarks').value;
+    
+            // store the values in localStorage
+            localStorage.setItem('reservationDate', reservationDate);
+            localStorage.setItem('reservationTime', reservationTime);
+            localStorage.setItem('reservationPeople', reservationPeople);
+            localStorage.setItem('reservationRemarks', reservationRemarks);
+    
+            //redirect to confirmation page
+            window.location.href = 'reservation_confirmation.html';
+        });
+
+    // Call fillDateOptions to populate the select on page load
+    window.onload = fillDateOptions;
+
+
+    //
+    document.getElementById('confirm-button').addEventListenner('click', function() {
+        const date = document.getElementById('reservation-date').value;
+        const time = document.getElementById('reservation-time').value;
+        const people = document.getElementById('reservation-people').value;
+        const remarks = document.getElementById('reservation-remarks').value;
+
+        // Store data in localStorage
+        localStorage.setItem('reservationDate', date);
+        localStorage.setItem('reservationTime', time);
+        localStorage.setItem('reservationPeople', people);
+        localStorage.setItem('reservationRemarks', remarks);
+
+        //redirect to confirmation page
+        window.location.href = 'reservation_confirmation.html';
+    })
+
+    // //store data in localStorage
+    // localStorage.setItem('reservationDate', date);
+
+    //Redirect to confirmation page
+    //window.location.href = 'reservation.confirmation.html';
+
+
+</script>
+        
+    
+    
+    </script>
+    
+</body>
+<footer class="footer">
+    <p>&copy; Call Us: (***) - *** - ****  /  Email Us: fakeaccount@goldenlink.com</p>
+</footer>
+</html>
+
+<style>
+    .container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 80px;
+}
+
+@media (max-width: 991px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+.header {
+    align-self: stretch;
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+@media (max-width: 991px) {
+    .header {
+        max-width: 100%;
+        margin-right: 9px;
+        flex-wrap: wrap;
+    }
+}
+
+.logo {
+    color: #426b1f;
+    letter-spacing: -0.32px;
+    flex-grow: 1;
+    margin: auto 0;
+    font: 500 32px/100% Newsreader, sans-serif;
+    text-decoration: none; /* Remove default underline */
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 16px;
+    color: #000;
+    font-weight: 400;
+    text-align: center;
+    line-height: 130%;
+}
+
+@media (max-width: 991px) {
+    .nav {
+        flex-wrap: wrap;
+    }
+}
+
+.nav-link {
+    font-family: Inter, sans-serif;
+    align-self: stretch;
+    margin: auto 0;
+    text-decoration: none; /* remove default underline */
+}
+
+.nav-button {
+    font-family: Inter, sans-serif;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: #426b1f;
+    align-self: stretch;
+    color: #fff;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 17px 20px;
+    text-decoration: none; /* no underline */
+}
+
+.reservation-container {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 208px;
+    max-width: 822px;
+    padding: 0 20px;
+    width: 100%;
+}
+
+@media (max-width: 991px) {
+    .reservation-container {
+        margin-top: 40px;
+    }
+}
+
+.reservation-title {
+    color: #000;
+    font: italic 400 64px/120% Newsreader, -apple-system, Roboto, Helvetica, sans-serif;
+    letter-spacing: -1.28px;
+    text-align: center;
+}
+
+@media (max-width: 991px) {
+    .reservation-title {
+        font-size: 40px;
+        max-width: 100%;
+    }
+}
+
+.reservation-label {
+    align-self: start;
+    color: #000;
+    font: 600 16px/130% Inter, sans-serif;
+    margin-top: 47px;
+    margin-left: 56px;
+}
+
+@media (max-width: 991px) {
+    .reservation-label {
+        margin: 40px 0 0 10px;
+    }
+}
+
+.reservation-select {
+    background-color: #fff;
+    border: 1px solid rgba(221, 221, 221, 1);
+    border-radius: 4px;
+    color: #808080;
+    display: flex;
+    font: 400 16px Inter, sans-serif;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 27px;
+    padding: 8px 16px;
+    width: 653px;
+}
+
+@media (max-width: 991px) {
+    .reservation-select {
+        flex-wrap: wrap;
+        padding-left: 20px;
+        max-width: 100%;
+    }
+}
+
+.reservation-confirm-button {
+    background-color: #426b1f;
+    border-radius: 8px;
+    color: #fff;
+    font: 600 20px/130% Inter, sans-serif;
+    justify-content: center;
+    margin-top: 25px;
+    padding: 23px 10px;
+    text-decoration: none; /* no underline */
+}
+
+.reservation-terms {
+    align-self: stretch;
+    color: #000;
+    font: 400 20px/32px Inter, sans-serif;
+    margin-top: 92px;
+}
+
+@media (max-width: 991px) {
+    .reservation-terms {
+        margin-top: 
+    }
+}
+
+</style>

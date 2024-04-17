@@ -28,8 +28,21 @@
     </div>
 
     <div id="main">
-      <h1>Goldin Link ~ Bridging Hearts, Connecting Generations</h1>
-      <button id="appointment">Scehdule An Appointment!</button>
+      <a class="div-link" href="patientRecords.html">
+        <div class="link-container">
+          <h2>Resident/Patient Information</h2>
+        </div>
+      </a>
+      <a class="div-link" href="#">
+        <div class="link-container">
+          <h2>Resident's Status</h2>
+        </div>
+      </a>
+      <a class="div-link" href="#">
+        <div class="link-container">
+          <h2>Events/Activites</h2>
+        </div>
+      </a>
     </div>
     
     <div id="whiteSpace">
@@ -64,9 +77,8 @@
   font-family: 'Raleway', sans-serif;
   overflow-x: hidden;
   width: 100%;
-  display: flex;
   justify-content: center;
-  margin: auto;
+  margin: auto auto;
 }
 
 .header {
@@ -142,21 +154,52 @@ h1 {
 }
 
 #main {
-  width: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://img.huffingtonpost.com/asset/5bb675e7250000940039a5e0.jpeg?ops=scalefit_720_noupscale');
   background-size: cover;
   background-repeat: no-repeat;
-  margin: 50px 0;
+  margin-right: auto;
   padding: 250px;
-
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
-#main h1 {
-  padding: auto;
-  margin-top: auto;
-  margin-bottom: 10px;
-  color: white;
+
+#main a {
+    flex: 1;
+    
+    height: 55vh;
+    text-align: center;
+    border: 1px solid #426b1f;
+    border-radius: 10px;
+    resize: none;
+    margin: 0 20px;
+    background-color: rgba(255,255,255, 0.2);
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out;
 }
+
+#main div {
+  padding: 20px;
+}
+
+#main a::before {
+  background-color: rgba(255,255,255,0.2);
+  text-decoration: none;
+}
+
+#main a:hover {
+  transform: scale(1.05);
+  background-color: rgba(255,255,255, 0.4);
+  text-decoration: none;
+}
+
+#main h2 {
+  font-size: 45px;
+  color: rgba(255,255,255, 0.7);
+  margin: 0;
+}
+
 
 #appointment {
   background-color: #426b1f;

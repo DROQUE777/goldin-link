@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="App.css"/>  
+    <title>Patient Information</title>
+  </head>
+
+  <body>
+
+    <main class="container"  style="max-width: 600px; margin: 20px auto; padding: 90px; border: 1px solid #426b1f;
+    border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <h1 style="display: flex; justify-content: center; align-items:center; margin: 10px auto; font: 600 36px/130% Inter, sans-serif;">Patient Information</h1>
+        <section id="nutritional"> <h3 style="display: flex; justify-content: center; align-items:center; margin: 6px auto;">Nutritional Information</h3>
+            <label for="dietary-preferences" class="dietary-preferences-label"><strong>Dietary Preferances</strong></label>
+            <textarea id="dietary-preferences" class="dietary-preferences-select"></textarea>
+
+            <label for="food-allergies" class="food-allergies-label"><strong>Food Allergies</strong></label>
+            <textarea id="food-allergies" class="food-allergies-select"></textarea>
+
+            <label for="meal-plan" class="meal-plan-label"><strong>Meal Plan</strong></label>
+            <textarea id="meal-plan" class="meal-plan-select" placeholder="e.g., diabetic diet, low-sodium diet"></textarea>
+
+            <h3 style="display: flex; justify-content: center; align-items: center; margin: 6px auto;">Activity and Social Engagement</h3>
+            <label for="hobbies-interests" class="hobbies-interests-label"><strong>Hobbies and Interests</strong></label>
+            <textarea id="hobbies-interests" class="hobbies-interests-select"></textarea>
+            <label for="social-history" class="social-history-label"><strong>Social History</strong></label>
+            <textarea id="social-history" placeholder="marital status" class="marital-status-label"></textarea>
+            <textarea id="social-history" placeholder="children" class="children-select"></textarea>
+            <textarea id="social-history" placeholder="occupation" class="occupation-select"></textarea>
+
+            <div class="two-buttons">
+              <a href="insurance_Billing.html"><button>Previous</button></a>
+              <a href="display_patient_info.html"><button>Next</button></a>
+              <button id="save-info">Save</button>
+            </div>
+    </main>
+
+  </body>
+</html>
+
+<style>
+  a {
+    text-decoration: none;
+
+  }
+
+  .two-buttons {
+    display: flex;
+    padding: 15px;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  .two-buttons button {
+    font-size: 20px;
+    padding: 12px 24px;
+    height: auto;
+    display: flex;
+    margin: 30px 14px;
+    align-items: center;
+    background-color:#426b1f;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+
+  }
+  label {
+    display: inline-block; 
+    margin-bottom: 13px;
+    margin-top: 5px;
+  }
+
+  textarea {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #426b1f;
+    border-radius: 4px;
+    min-height: 10px;
+    resize: none;
+    margin: 6px auto;
+  }
+
+  body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('https://img.huffingtonpost.com/asset/5bb675e7250000940039a5e0.jpeg?ops=scalefit_720_noupscale');
+  background-size: cover;
+  background-repeat: no-repeat;
+  }
+
+  .container {
+    background-color: white;
+  }
+</style>

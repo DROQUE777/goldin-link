@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="App.css"/>  
+    <title>Display Patient Information</title>
+  </head>
+
+  <body>
+    <main class="container" style="max-width: 600px; margin: 20px auto; padding: 90px; border: 1px solid #426b1f;
+    border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h1 style="display: flex; justify-content: center; align-items:center; margin: 10px auto; font: 600 36px/130% Inter, sans-serif;">Patient Information</h1>
+    
+    <div class="tab-container">
+        <button class="tab-button" onclick="toggleTab('personal-tab')">Personal</button>
+        <div id="personal-tab" class="tab-content">
+            Information for Personal
+        </div>
+    
+        <button class="tab-button" onclick="toggleTab('medical-tab')">Medical</button>
+        <div id="medical-tab" class="tab-content">
+            Information for Medical
+        </div>
+
+        <button class="tab-button" onclick="toggleTab('insurance-tab')">Insurance</button>
+        <div id="insurance-tab" class="tab-content">
+            Information for Insurance
+        </div>
+
+        <button class="tab-button" onclick="toggleTab('nutritional-tab')">Nutrition/Activity</button>
+        <div id="nutritional-tab" class="tab-content">
+            Information for Nutrition/Activity
+        </div>
+    
+    </main>
+    
+        <!-- Add more tabs as needed -->
+    </div>
+  </body>
+</html>
+
+<style>
+
+.tab-container {
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(50px, 1fr)); /* Responsive grid rows */
+    gap: 10px; /* Gap between grid items */
+    align-items: center; /* Center the tab buttons vertically */
+
+}
+
+.tab-button {
+    background-color: #f2f2f2;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    
+}
+
+.tab-content {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+  body {
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('https://img.huffingtonpost.com/asset/5bb675e7250000940039a5e0.jpeg?ops=scalefit_720_noupscale');
+  background-repeat: no-repeat;
+  background-size: cover
+  }
+
+  .container {
+    background-color: white;
+    min-height: 65vh;
+  }
+</style>
+
+<script>
+    function toggleTab(tabId) {
+    var tabContent = document.getElementById(tabId);
+
+    // Check if the tab content is currently visible
+    if (tabContent.style.display === 'block') {
+        // Hide the tab content
+        tabContent.style.display = 'none';
+    } else {
+        // Hide all tab contents
+        var allTabs = document.querySelectorAll('.tab-content');
+        allTabs.forEach(function(tab) {
+            tab.style.display = 'none';
+        });
+
+        // Show the selected tab content
+        tabContent.style.display = 'block';
+    }
+}
+</script>
