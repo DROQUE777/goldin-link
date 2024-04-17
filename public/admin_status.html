@@ -10,38 +10,40 @@
   <body>
     <main class="container" style="max-width: 600px; margin: 20px auto; padding: 90px; border: 1px solid #426b1f;
     border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-    <h1 style="display: flex; justify-content: center; align-items:center; margin: 10px auto; font: 600 36px/130% Inter, sans-serif;">Patient Information</h1>
+    <h1 style="display: flex; justify-content: center; align-items:center; margin: 10px auto; font: 600 36px/130% Inter, sans-serif;">Patient Status</h1>
 
-    <section id="personal">
-
-    </section>
-
-    <section id="medical">
-
-    </section>
-
-    <section id="insurance">
-
-    </section>
-
-    <section id="nutritional">
-
-    </section>
     
-    <div class="two-buttons">
-        <a href="#"><button id="submit">Submit</button></a>
-    </div>
+<div class="update-section">
+    <h2>Daily Care Activities</h2>
+    <p>Meals and Nutrition: Provided three balanced meals and snacks throughout the day.</p>
+    <p>Hydration Status: Ensured proper hydration with frequent water intake and monitoring.</p>
+    <p>Mobility and Exercise: Assisted with walking exercises and mobility aids as needed.</p>
+    <p>Personal Hygiene: Assisted with daily grooming, including bathing and dressing.</p>
+</div>
+
+<div class="update-section">
+    <h2>Emotional and Social Well-being</h2>
+    <p>Mood and Behavior: Noted a positive mood and active engagement in social activities.</p>
+    <p>Social Interactions: Encouraged social interactions with peers and participated in group activities.</p>
+    <p>Emotional Well-being: Provided emotional support and comfort during daily care routines.</p>
+</div>
+
+<div class="update-section">
+    <h2>Safety and Security</h2>
+    <p>Fall Risks: Implemented fall prevention measures and ensured safe mobility practices.</p>
+    <p>Monitoring Vital Signs: Regularly checked and recorded vital signs, including blood pressure and heart rate.</p>
+    <p>Incidents: No incidents or accidents reported; maintained a safe environment.</p>
+</div>
+
+<div class="two-buttons">
+    <button id="send-info">Send</button>
+  </div>
     </main>
   </body>
 </html>
 
 <style>
-    a {
-    text-decoration: none;
-
-  }
-
-  .two-buttons {
+    .two-buttons {
     display: flex;
     padding: 15px;
     margin: 0 auto;
@@ -60,12 +62,31 @@
     border-radius: 5px;
     border: none;
     cursor: pointer;
-  }
+    
+}
+   .update-section {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+p {
+    color: #666;
+    margin-bottom: 15px;
+}
 
   body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('https://img.huffingtonpost.com/asset/5bb675e7250000940039a5e0.jpeg?ops=scalefit_720_noupscale');
-  background-size: 100%;
   background-repeat: no-repeat;
+  background-size: cover;
   }
 
   .container {
