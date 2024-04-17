@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation Form</title>
-    <link rel="stylesheet" href="reservation_reception_styles.css"> <!-- Linking to the CSS file -->
+    <!-- <link rel="stylesheet" href="reservation_reception_styles.css"> Linking to the CSS file -->
 </head>
 
 <body>
@@ -103,7 +103,7 @@
         //window.onload = fillDateOptions;
         window.onload = function() { //
             //fillDataOptions(); //
-        }
+        
     
     
         //
@@ -126,36 +126,7 @@
             window.location.href = 'reservation_confirmation.html';
         });
 
-    // Call fillDateOptions to populate the select on page load
-    window.onload = fillDateOptions;
-
-
-    //
-    document.getElementById('confirm-button').addEventListenner('click', function() {
-        const date = document.getElementById('reservation-date').value;
-        const time = document.getElementById('reservation-time').value;
-        const people = document.getElementById('reservation-people').value;
-        const remarks = document.getElementById('reservation-remarks').value;
-
-        // Store data in localStorage
-        localStorage.setItem('reservationDate', date);
-        localStorage.setItem('reservationTime', time);
-        localStorage.setItem('reservationPeople', people);
-        localStorage.setItem('reservationRemarks', remarks);
-
-        //redirect to confirmation page
-        window.location.href = 'reservation_confirmation.html';
-    })
-
-    // //store data in localStorage
-    // localStorage.setItem('reservationDate', date);
-
-    //Redirect to confirmation page
-    //window.location.href = 'reservation.confirmation.html';
-
-
-</script>
-        
+        }; //
     
     
     </script>
@@ -167,7 +138,8 @@
 </html>
 
 <style>
-    .container {
+
+.container {
     background-color: #fff;
     display: flex;
     flex-direction: column;
