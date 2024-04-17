@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="reservation_completion_styles.css" rel="stylesheet">
+    <title>Reservation Successful</title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <!-- <div class="logo">Golden Link</div> -->
+            <a href="landing_page.html" class="logo">Golden Link</a> <!-- Hyperlink the logo -->
+            <nav class="nav">
+                <a href="#" class="nav-link">Calendar</a>
+                <a href="#" class="nav-link">Activities</a>
+                <a href="#" class="nav-link">Meals</a>
+                <a href="#" class="nav-link">My profile</a>
+                <a href="reservation_reception.html" class="nav-button">Appointment</a> <!-- Hyperlink to the appointment reservation page -->
+            </nav>
+        </header>
+
+
+        <main class="reservation-container">
+        <h1 class="confirmation-title">Reservation Successful!</h1>
+
+
+        <div class="reservation-confirmation">
+        <h1 class="title">Reservation Details</h1>
+        <!-- <div class="reservation-info">
+            <div class="info-item">
+                <span class="info-label">Date:</span>
+                <span class="info-value" id="confirmation-date"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Number of People:</span>
+                <span class="info-value" id = "confirmation-people"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Time:</span>
+                <span class="info-value" id = "confirmation-time"></span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Remarks:</span>
+                <span class="info-value" id = "confirmation-remarks"></span>
+            </div>
+        </div> -->
+
+
+
+        <div class="reservation-confirmation">
+            <span class="info-label">Date:</span>
+            <span class="info-value" id="confirmation-date"></span>
+            <span class="info-label">Time:</span>
+            <span class="info-value" id="confirmation-time"></span>
+            <span class="info-label">Number of People:</span>
+            <span class="info-value" id="confirmation-people"></span>
+            <span class="info-label">Remarks:</span>
+            <span class="info-value" id="confirmation-remarks"></span>
+        </div>
+
+        <a href="#" class="confirm-button">Go Back to Top</a>
+    </div>
+
+    <script>
+    window.onload = function() {
+
+        // Retrieve data from localStorage
+        const reservationDate = localStorage.getItem('reservationDate');
+        const reservationTime = localStorage.getItem('reservationTime');
+        const reservationPeople = localStorage.getItem('reservationPeople');
+        const reservationRemarks = localStorage.getItem('reservationRemarks');
+
+        // Display data on completion page
+        document.getElementById('confirmation-date').textContent = reservationDate;
+        document.getElementById('confirmation-time').textContent = reservationTime;
+        document.getElementById('confirmation-people').textContent = reservationPeople;
+        document.getElementById('confirmation-remarks').textContent = reservationRemarks;
+
+        localStorage.clear(); //optionally clear all local storage
+    }
+    </script>
+</body>
+
+<footer class="footer">
+    <p>&copy; Call Us: (***) - *** - ****  /  Email Us: fakeaccount@goldenlink.com</p>
+</footer>
+
+</html>
+
