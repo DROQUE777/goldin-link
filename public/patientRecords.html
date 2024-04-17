@@ -12,8 +12,30 @@
     <main class="container" style="max-width: 600px; margin: 20px auto; padding: 90px; border: 1px solid #426b1f;
     border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
      <nav class="add-bar">
-        <a href="personalInfo.html"><button class="add-button">Add New Profile</button></a>
+        <a href="personalInfo.html" id="login-link"><button id="add-button">Add New Profile</button></a>
     </nav>
+
+    <script>
+        const loginButton = document.getElementById('add-button');
+        loginButton.addEventListener('click', function(event){
+            event.preventDefault();
+            const username = prompt('Enter your username');
+            const password = prompt('Enter your password');
+
+            if(username && password) {
+                alert('Login Successful');
+                window.location.href = 'patientInfo.html';
+            } else {
+                alert('Username or password cannot be empty.');
+            }
+        
+        }
+    )
+    </script>
+
+
+
+
     <h1 style="display: flex; justify-content: center; align-items:center; margin: 10px auto; font: 600 36px/130% Inter, sans-serif;">Patient Information</h1>
 
     <table class="contact-table">
