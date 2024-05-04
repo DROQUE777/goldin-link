@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .calendar-container {
+            width: 70%;
+        }
+
+        .form-container {
+            width: 30%;
+            padding-left: 20px;
+        }
+
+        body, h1, button {
+            font-family: Arial, sans-serif;
+        }
+
+        .calendar {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .weekdays, .days {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+        }
+
+        .weekdays div {
+            padding: 10px 0;
+            background-color: #eee;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .days div {
+            position: relative; /* Relative positioning for + more link */
+            padding: 10px;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            height: 150px; /* Increased height for day cells */
+            overflow: hidden; /* Ensures content doesn't overflow */
+        }
+
+        .event {
+            width: calc(100% - 20px); /* Set width to match day cell and adjust for padding */
+            height: 30px; /* Fixed height for event cells */
+            max-height: 10px; /* Minimum height for event cells */
+            min-height: 10px;
+            line-height: 30px; /* Set line-height to match the fixed height */
+            background-color: #f3f4f6;
+            margin: 2px;
+            padding: 2px 5px;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: flex; /* Added */
+            justify-content: center; /* Added */
+            align-items: center; /* Added */
+        }
+
+        .more-events {
+            display: none; /* Initially hide the "+ more" link */
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .days div:hover .more-events {
+            display: block; /* Show "+ more" link on hover */
+        }
+
+        #eventPopup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 1000;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Added styles for the form container */
+        .form-container {
+            /* display: flex;
+            flex-direction: column;
+            align-items: flex-start; */
+            width: 30%;
+            background-color: #f0f3f5; /* Light blue background */
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container h2 {
+            margin-bottom: 10px;
+        }
+
+        /* .form-container form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        } */
+
+        .form-container label {
+            /* display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            width: 100%; */
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* .form-container input {
+            width: 60%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        } */
+        .form-container input,
+        .form-container textarea {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+
+        .form-container button {
+            padding: 10px 135px;
+            background-color: #426b1f;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="calendar-container">
+            <div class="calendar">
+                <div class="header">
+                    <button onclick="changeMonth(-1)">◀</button>
+                    <h1 id="monthDisplay"></h1>
+                    <button onclick="changeMonth(1)">▶</button>
+                </div>
+                <div class="weekdays">
+                    <div>Sunday</div>
+                    <div>Monday</div>
+                    <div>Tuesday</div>
+                    <div>Wednesday</div>
+                    <div>Thursday</div>
+                    <div>Friday</div>
+                    <div>Saturday</div>
+                </div>
+                <div class="days" id="calendarDays"></div>
+            </div>
+        </div>
+        <div class="form-container"> 
+            <h2>Add Event</h2>
+            <form>
+                <label>
+                    Date:
+                    <input type="date" id="event-date">
+                </label>
+                <label>
+                    Time:
+                    <input type="time" id="event-time">
+                </label>
+                <label>
+                    Event Title:
+                    <input type="text" id="event-title">
+                </label>
+                <label>
+                    Event Details:
+                    <textarea id="event-details"></textarea>
+                </label>
+                <button type="button" onclick="addEvent()">Add Event</button>
+            </form>
+        </div>
+    </div>
+    <div id="overlay" onclick="closePopup()"></div>
+    <div id="eventPopup"></div>
+
+    <script>
+        let currentDate = new Date();
+    
+        const events = {
+            '2024-04-01': ["Stretching with Empower Me Wellness", "Matinee Movie", "More events", "Another event", "New event"],
+            '2024-04-02': ["Zumba Gold with Perla", "The CC Corner- Coffee, Daily Chronicle", "More events"],
+            '2024-04-03': ["National Walking Day", "Chair Aerobics with Fit Group"],
+            '2024-04-04': ["Communion", "Chair Tai Chi"],
+            '2024-05-01': ["Chair Aerobics with Fit Group", "Errand Wednesday"],
+            '2024-05-02': ["Communion", "Chair Tai Chi"],
+            '2024-05-03': ["Yoga", "Table Talk w/ Coffee & Doughnuts"],
+        };
+    
+        function setupCalendar() {
+            const monthDisplay = document.getElementById('monthDisplay');
+            const calendarDays = document.getElementById('calendarDays');
+    
+            // Get the current date and set it to the first day of the current month
+            currentDate.setDate(1);
+    
+            // Get the first day of the month (0-Sunday, 6-Saturday)
+            const firstDayWeekday = currentDate.getDay();
+    
+            // Get the number of days in the current month
+            const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+    
+            monthDisplay.innerText = `${currentDate.toLocaleString('en-US', { month: 'long' })} ${currentDate.getFullYear()}`;
+    
+            calendarDays.innerHTML = '';
+    
+            // Calculate the offset for the day grid (number of empty cells before the first day)
+            const offset = firstDayWeekday; // Adjust for Sunday (0) being the first day of the week
+    
+            // Add empty cells at the start
+            for (let i = 0; i < offset; i++) {
+                const dayCell = document.createElement('div');
+                calendarDays.appendChild(dayCell);
+            }
+    
+            // Populate the calendar grid with days
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayString = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayCell = document.createElement('div');
+                const dayEvents = events[dayString] || [];
+                dayCell.innerText = day;
+                let displayedEvents = 0;
+                dayEvents.forEach((event, index) => {
+                    if (index < 3) { // Display up to 3 events
+                        const eventDiv = document.createElement('div');
+                        eventDiv.className = 'event';
+                        eventDiv.innerText = event;
+                        dayCell.appendChild(eventDiv);
+                        displayedEvents++;
+                    }
+                });
+                if (dayEvents.length > 3) {
+                    const moreEventsLink = document.createElement('div');
+                    moreEventsLink.className = 'more-events';
+                    moreEventsLink.innerText = `+${dayEvents.length - displayedEvents} more`;
+                    moreEventsLink.onclick = () => showEventsPopup(dayEvents);
+                    dayCell.appendChild(moreEventsLink);
+                }
+                dayCell.onclick = () => showEventsPopup(dayEvents);
+                calendarDays.appendChild(dayCell);
+            }
+        }
+    
+        function changeMonth(offset) {
+            currentDate.setMonth(currentDate.getMonth() + offset);
+            setupCalendar();
+        }
+    
+        function showEventsPopup(events) {
+            const popup = document.getElementById('eventPopup');
+            const overlay = document.getElementById('overlay');
+            popup.innerHTML = '<h2>Events</h2>' + events.map(event => `<div>${event}</div>`).join('');
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+    
+        function closePopup() {
+            const popup = document.getElementById('eventPopup');
+            const overlay = document.getElementById('overlay');
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    
+        function addEvent() {
+            const dateInput = document.getElementById('event-date');
+            const timeInput = document.getElementById('event-time');
+            const titleInput = document.getElementById('event-title');
+            const detailsInput = document.getElementById('event-details');
+    
+            const date = dateInput.value;
+            const time = timeInput.value;
+            const title = titleInput.value;
+            const details = detailsInput.value;
+    
+            if (!events[date]) {
+                events[date] = [];
+            }
+    
+            //const eventDetails = `${title} (${time}) - ${details}`;
+            const eventDetails = `${time} ${title} - ${details}`;
+            events[date].push(eventDetails);
+            setupCalendar();
+    
+            // Clear the form inputs
+            dateInput.value = '';
+            timeInput.value = '';
+            titleInput.value = '';
+            detailsInput.value = '';
+        }
+    
+        document.addEventListener('DOMContentLoaded', setupCalendar);
+    </script>
+    </body>
+    </html>
