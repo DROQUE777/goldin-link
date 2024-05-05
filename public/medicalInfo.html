@@ -12,27 +12,50 @@
     border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
         <h1 style="display: flex; justify-content: center; align-items:center; margin: 10px auto; font: 600 36px/130% Inter, sans-serif;">Patient Information</h1>
         <section id="medical"> <h3 style="display: flex; justify-content: center; align-items:center; margin: 6px auto;">Medical Information</h3>
-            <label for="allergies" class="allergies-label"><strong>Allergies</strong></label>
-            <textarea id="allergies" class="allergies-select"></textarea>
+            <label for="allergies" class="allergies-label"><strong>Medical Allergies</strong></label>
+            <textarea placeholder="Insulin, Penicillin..." id="allergies" class="allergies-select"></textarea>
 
             <label for="chronic-conditions" class="chronic-conditions-label"><strong>Chronic Conditions</strong></label>
-            <textarea id="chronic-conditions" class="chronic-conditions-select"></textarea>
+            <textarea placeholder="Heart Disease, Lung Cancer..." id="chronic-conditions" class="chronic-conditions-select"></textarea>
 
             <label for="past-surgeries" class="past-surgeries-label"><strong>Past Surgeries</strong></label>
-            <textarea id="past-surgeries" class="past-surgeries-select"></textarea>
-            <label for="medication" class="medication-label"><strong>Medication</strong></label>
-            <textarea id="medication" class="medication-label"></textarea>
+            <textarea placeholder="Appendectomy, Cataract Surgery..." id="past-surgeries" class="past-surgeries-select"></textarea>
 
-            <label for="care-plan" class="care-plan-label"><strong>Care Plan</strong></label>
-            <textarea placeholder="Care Preferences (dietary, activities, etc.)" id="care-plan" class="preferences-select"></textarea>
-            <textarea placeholder="Mobile Assistance Needs" id="care-plan" class="mobile-assistance-select"></textarea>
-            <textarea placeholder="Assistance with Daily Activites(bathing, dressing, eating, etc.)" id="care-plan" class="daily-assistance-select"></textarea>
-            <textarea placeholder="Special Medical Equipment Needs (e.g., oxygen, catheter)" id="care-plan" class="medical-e-select"></textarea>
-            <label for="healthcare-providers" class="healthcare-providers-label"><strong>Healthcare Providers</strong></label>
-            <textarea placeholder="Primary Care Physician's Information" id="healthcare-providers" class="physician-select"></textarea>
-            <textarea placeholder="Specialist Doctors" id="healthcare-providers" class="specialist-select"></textarea>
-            <textarea placeholder="Therapists" id="healthcare-providers" class="therapist-select"></textarea>
-            <textarea placeholder="Pharmacy Information" id="healthcare-providers" class="pharmacy-select"></textarea>
+            <label for="medication" class="medication-label"><strong>Medication</strong></label>
+            <textarea placeholder="Lisinopril, Levothyroxine..." id="medication" class="medication-label"></textarea>
+
+            <label for="care-preferences" class="care-preferences-label"><strong>Care Preferences</strong></label>
+            <textarea placeholder="Care Preferences (dietary, activities, etc.)" id="care-preferences" class="preferences-select"></textarea>
+
+            <label for="mobile-assistance" class="mobile-assistance-label" ><strong>Mobile Assistance</strong></label>
+            <textarea placeholder="Walking, getting out of bed..." id="mobile-assistance" class="mobile-assistance-select"></textarea>
+
+            <label for="daily-assistance" class="daily-assistance-label"><strong>Assistance with Daily Activites</strong></label>
+            <textarea placeholder="Bathing, dressing, eating, etc..." id="assistance-daily" class="daily-assistance-select"></textarea>
+
+            <label for="medical-equipment" class="medical-equipment-label"><strong>Special Medical Equipment Needs</strong></label>
+            <textarea placeholder="E.G., oxygen, catheter..." id="medical-equipment" class="medical-equipment-select"></textarea>
+
+
+            <label for="healthcare-provider" class="healthcare-provider-label"><strong>Healthcare Provider</strong></label>
+            <textarea placeholder="Dr. Harleen Quinzel" id="healthcare-provider" class="healthcare-provider-select"></textarea>
+
+            <label for="physician-phone" class="physician-phone-label"><strong>Physician's Phone</strong></label>
+            <textarea placeholder="XXX-XXX-XXXX" id="physician-phone" class="physician-phone-select"></textarea>
+
+            <label for="physician-email" class="physician-email-label"><strong>Physician's Email</strong></label>
+            <textarea placeholder="PhakeEmail@gmail.com" id="physician-email" class="physician-email-select"></textarea>
+
+            <label for="specialist" class="specialist-label"><strong>Specialist Doctor</strong></label>
+            <textarea placeholder="Dr. Strange" id="specialist" class="specialist-select"></textarea>
+
+            <label for="therapist" class="therapist-label"><strong>Therapist</strong></label>
+            <textarea placeholder="Dr. Phil" id="therapist" class="therapist-select"></textarea>
+
+            <label for="pharmacy" class="pharmacy-label"><strong>Pharmacy Information</strong></label>
+            <textarea placeholder="PharmX: Your prescription solution. Fast, friendly, and convenient service for all your medication needs. Your health is our priority.
+            " id="pharmacy" class="pharmacy-select"></textarea>
+
         </section>
 
         <div class="two-buttons">

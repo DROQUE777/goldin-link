@@ -11,7 +11,7 @@
     <main class="container" style="max-width: 600px; margin: 20px auto; padding: 90px; border: 1px solid #426b1f;
     border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
         <h1 style="display: flex; justify-content: center; align-items:center; margin: 10px auto; font: 600 36px/130% Inter, sans-serif;">Patient Information</h1>
-        <section id="personal"> <h3 style="display: flex; justify-content: center; align-items:center; margin: 6px auto;">Personal Information</h3>
+        <section id="personal-info-id"> <h3 style="display: flex; justify-content: center; align-items:center; margin: 6px auto;">Personal Information</h3>
             <label for="name" class="name-label" ><strong>Patient's Name</strong></label>
             <textarea rows="1" id="name" class="name-select"></textarea>
 
@@ -28,12 +28,15 @@
             </select>
             <label for="social-security" class="social-security-label"><strong>Social Securuty</strong></label>
             <textarea id="social-security" class="social-security-label"></textarea>
+
             <label for="contact" class="contact-label"><strong>Contact</strong></label>
             <textarea placeholder="XXX-XXX-XXXX" id="contact" class="phone-select"></textarea>
-            <textarea placeholder="YourEmail@gmail.com" id="contact" class="email-select"></textarea>
+            
+            <label for="email" class="email-label"><strong>Email</strong></label>
+            <textarea placeholder="YourEmail@gmail.com" id="email" class="email-select"></textarea>
+
             <label for="emergency-contact" class="emergency-contact-label"><strong>Emergency Contact</strong></label>
             <textarea placeholder="XXX-XXX-XXXX" id="emergency-contact" class="ephone-select"></textarea>
-            <textarea placeholder="YourEmail@gmail.com" id="emergency-contact" class="eemail-select"></textarea>
         </section>
 
         <div class="two-buttons">
@@ -43,6 +46,7 @@
         
     </main>
     <script src="patientInfo.js"></script>
+    <script src="personal.js"></script>
   </body>
 </html>
 
