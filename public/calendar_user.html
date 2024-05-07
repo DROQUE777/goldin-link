@@ -4,206 +4,204 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Calendar</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-
-.container {
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px 80px;
-}
-
-@media (max-width: 991px) {
+<style>
     .container {
-        padding: 0 20px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
-}
 
-.header {
-    align-self: stretch;
-    display: flex;
-    width: 100%;
-    gap: 20px;
-}
+    @media (max-width: 991px) {
+        .container {
+            padding: 0 20px;
+        }
+    }
 
-@media (max-width: 991px) {
     .header {
-        max-width: 100%;
-        margin-right: 9px;
-        flex-wrap: wrap;
+        align-self: stretch;
+        display: flex;
+        justify-content: center; 
+        width: 100%;
+        gap: 20px;
     }
-}
 
-.logo {
-    color: #426b1f;
-    letter-spacing: -0.32px;
-    flex-grow: 1;
-    margin: auto 0;
-    font: 500 32px/100% Newsreader, sans-serif;
-    text-decoration: none; /* Remove default underline */
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 16px;
-    color: #000;
-    font-weight: 400;
-    text-align: center;
-    line-height: 130%;
-}
-
-@media (max-width: 991px) {
-    .nav {
-        flex-wrap: wrap;
-    }
-}
-
-.nav-link {
-    font-family: Inter, sans-serif;
-    align-self: stretch;
-    margin: auto 0;
-    text-decoration: none; /* remove default underline */
-}
-
-.nav-button {
-    font-family: Inter, sans-serif;
-    justify-content: center;
-    border-radius: 8px;
-    background-color: #426b1f;
-    align-self: stretch;
-    color: #fff;
-    font-weight: 600;
-    white-space: nowrap;
-    padding: 17px 20px;
-    text-decoration: none; /* no underline */
-}
-
-
-        body, h1, button {
-            font-family: Arial, sans-serif;
-        }
-
-        .calendar {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
+    @media (max-width: 991px) {
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #ccc;
+            max-width: 100%;
+            margin-right: 9px;
+            flex-wrap: wrap;
         }
+    }
 
-        .weekdays, .days {
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-        }
+    .logo {
+        color: #426b1f;
+        letter-spacing: -0.32px;
+        flex-grow: 1;
+        margin: auto 0;
+        font: 500 32px/100% Newsreader, sans-serif;
+        text-decoration: none; 
+    }
 
-        .weekdays div {
-            padding: 10px 0;
-            background-color: #eee;
-            border-bottom: 1px solid #ddd;
-        }
+    .nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 16px;
+        color: #000;
+        font-weight: 400;
+        text-align: center;
+        line-height: 130%;
+    }
 
-        .days div {
-            position: relative; /* Relative positioning for + more link */
-            padding: 10px;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            align-items: center;
-            height: 150px; /* Increased height for day cells */
-            overflow: hidden; /* Ensures content doesn't overflow */
+    @media (max-width: 991px) {
+        .nav {
+            flex-wrap: wrap;
         }
+    }
 
-        .event {
-            width: calc(100% - 20px); /* Set width to match day cell and adjust for padding */
-            height: 30px; /* Fixed height for event cells */
-            max-height: 10px; /* Minimum height for event cells */
-            min-height: 10px;
-            line-height: 30px; /* Set line-height to match the fixed height */
-            background-color: #f3f4f6;
-            margin: 2px;
-            padding: 2px 5px;
-            border-radius: 5px;
-            font-size: 0.75rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: flex; /* Added */
-            justify-content: center; /* Added */
-            align-items: center; /* Added */
-        }
+    .nav-link {
+        font-family: Inter, sans-serif;
+        align-self: stretch;
+        margin: auto 0;
+        text-decoration: none; 
+    }
 
-        .more-events {
-            display: none; /* Initially hide the "+ more" link */
-            cursor: pointer;
-            color: blue;
-            text-decoration: underline;
-            position: absolute;
-            bottom: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+    .nav-button {
+        font-family: Inter, sans-serif;
+        justify-content: center;
+        border-radius: 8px;
+        background-color: #426b1f;
+        align-self: stretch;
+        color: #fff;
+        font-weight: 600;
+        white-space: nowrap;
+        padding: 17px 20px;
+        text-decoration: none; 
+    }
 
-        .days div:hover .more-events {
-            display: block; /* Show "+ more" link on hover */
-        }
+    body, h1, button {
+        font-family: Arial, sans-serif;
+    }
 
-        #eventPopup {
-            display: none;
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            border: 1px solid #ccc;
-            padding: 20px;
-            z-index: 1000;
-            width: 80%;
-            max-width: 600px;
-        }
+    .calendar {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch; 
+    }
 
-        #overlay {
-            display: none;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-    </style>
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: #f8f8f8;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .weekdays, .days {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        text-align: center;
+    }
+
+    .weekdays div {
+        padding: 10px 0;
+        background-color: #eee;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .days div {
+        position: relative; 
+        padding: 10px;
+        border-right: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        height: 150px; 
+        overflow: hidden; 
+    }
+
+    .event {
+        width: calc(100% - 20px); /* Set width to match day cell and adjust for padding */
+        height: 30px; /* Fixed height for event cells */
+        max-height: 10px; /* Minimum height for event cells */
+        min-height: 10px;
+        line-height: 30px; /* Set line-height to match the fixed height */
+        background-color: #f3f4f6;
+        margin: 2px;
+        padding: 2px 5px;
+        border-radius: 5px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: flex; /* Added */
+        justify-content: center; /* Added */
+        align-items: center; /* Added */
+    }
+
+    .more-events {
+        display: none; /* Initially hide the "+ more" link */
+        cursor: pointer;
+        color: blue;
+        text-decoration: underline;
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .days div:hover .more-events {
+        display: block; /* Show "+ more" link on hover */
+    }
+
+    #eventPopup {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 20px;
+        z-index: 1000;
+        width: 80%;
+        max-width: 600px;
+    }
+
+    #overlay {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+</style>
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <!-- <div class="logo">Golden Link</div> -->
-            <a href="landing_page.html" class="logo">Golden Link</a> <!-- Hyperlink the logo -->
+            <a href="index.html" class="logo">Golden Link</a>
             <nav class="nav">
-                <a href="#" class="nav-link">Calendar</a>
+                <a href="calendar_user.html" class="nav-link">Calendar</a>
                 <a href="#" class="nav-link">Activities</a>
                 <a href="#" class="nav-link">Meals</a>
                 <a href="#" class="nav-link">My profile</a>
-                <a href="reservation_reception.html" class="nav-button">Appointment</a> <!-- Hyperlink to the appointment reservation page -->
+                <a href="reservation_reception.html" class="nav-button">Appointment</a>
             </nav>
         </header>
-
     <div class="calendar">
         <div class="header">
             <button onclick="changeMonth(-1)">◀</button>
@@ -228,13 +226,9 @@
         let currentDate = new Date();
 
         const events = {
-            '2024-04-01': ["Stretching with Empower Me Wellness", "Matinee Movie", "More events", "Another event", "New event"],
-            '2024-04-02': ["Zumba Gold with Perla", "The CC Corner- Coffee, Daily Chronicle", "More events"],
-            '2024-04-03': ["National Walking Day", "Chair Aerobics with Fit Group"],
-            '2024-04-04': ["Communion", "Chair Tai Chi"],
-            '2024-05-01': ["Chair Aerobics with Fit Group", "Errand Wednesday"],
-            '2024-05-02': ["Communion", "Chair Tai Chi"],
-            '2024-05-03': ["Yoga", "Table Talk w/ Coffee & Doughnuts"],
+            '2024-05-01': [" 10:00 Aerobics"],
+            '2024-05-02': ["10:00 Tai Chi"],
+            '2024-05-03': ["10:00 Yoga", "14:00 Boba"],
         };
 
         function setupCalendar() {
@@ -250,7 +244,6 @@
             // Get the number of days in the current month
             const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
 
-            //monthDisplay.innerText = `${currentDate.toLocaleString('default', { month: 'long' })} ${currentDate.getFullYear()}`;
             monthDisplay.innerText = `${currentDate.toLocaleString('en-US', { month: 'long' })} ${currentDate.getFullYear()}`;
 
             calendarDays.innerHTML = '';
