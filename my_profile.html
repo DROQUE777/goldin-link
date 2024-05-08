@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>My Profile</title>
+</head>
+<body>
+    <header class="container1">
+    <header class="header">
+        <!-- <div class="logo">Golden Link</div> -->
+        <a href="landing_page.html" class="logo">Golden Link</a> <!-- Hyperlink the logo -->
+        <nav class="nav">
+            <a href="#" class="nav-link">Calendar</a>
+            <a href="#" class="nav-link">Activities</a>
+            <a href="#" class="nav-link">Meals</a>
+            <a href="reservation_reception.html" class="nav-button">Appointment</a> <!-- Hyperlink to the appointment reservation page -->
+        </nav>
+    </header>
+
+    <div id="greenSpace">
+      <div></div>
+    </div>
+    <form class="d-flex" role="search" style="justify-content: flex-end;">
+        <button class="btn btn-outline-success" type="button" id="signoutbutton">Sign Out</button>
+    </form>
+    <div id="whiteSpace">
+      <div></div>
+    </div>
+
+    <main class="profile-container">
+        <h1 class="profile-title">My Profile</h1>
+
+
+    <div class="my-profile">
+        <h1 class="title">Account Information</h1>
+        <div class="account-info">
+            <div class="info-item">
+                <span class="info-label">First Name:</span>
+                <span class="info-value" id="first-name"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Last Name:</span>
+                <span class="info-value" id = "last-name"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Date of Birth:</span>
+                <span class="info-value" id = "date-of-birth"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Email Address:</span>
+                <span class="info-value" id = "email-address"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Phone Number:</span>
+                <span class="info-value" id = "phone-number"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Membership Status:</span>
+                <span class="info-value" id = "membership-status"></span>
+            </div>
+        </div>
+
+        <a href="edit_profile.html" class="edit-button">Edit Profile</a>
+    </div>
+    
+
+    <h2 id="msg"></h2>
+    <h2 id="greet"></h2>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+    
+
+<script>
+    let UserCreds = JSON.parse(sessionStorage.getItem("user-cred"));
+    let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+    let MsgHead = document.getElementById('msg');
+    let GreetHead = document.getElementById('greet');
+    let SignoutBtn = document.getElementById('signoutbutton');
+
+
+    let Signout = ()=>{
+        sessionStorage.removeItem("user-creds");
+        sessionStorage.removeItem("user-info");
+        window.location.href = 'signIn.html'
+    }
+
+
+    SignoutBtn.addEventListener('click', Signout);
+
+    // Get the button element by its ID
+    var button = document.getElementById("appointment");
+
+</script>
+
+
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+    import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCAWkfkLakdoJR3OzJ5dtWeSczI8v8WnXM",
+      authDomain: "golden-link-69f12.firebaseapp.com",
+      databaseURL: "https://golden-link-69f12-default-rtdb.firebaseio.com",
+      projectId: "golden-link-69f12",
+      storageBucket: "golden-link-69f12.appspot.com",
+      messagingSenderId: "446825364339",
+      appId: "1:446825364339:web:431633896a6548a1e8e306",
+      measurementId: "G-RN7XTFM3G9"
+    };
+  
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    const auth = getAuth(app);
+    const dbref = ref(db);
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            get(ref(db, 'UsersAuthList/' + user.uid)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    document.getElementById('first-name').textContent = data.firstname || 'N/A';
+                    document.getElementById('last-name').textContent = data.lastname || 'N/A';
+                    document.getElementById('date-of-birth').textContent = data.dateofbirth || 'N/A';
+                    document.getElementById('email-address').textContent = user.email || 'N/A';
+                    document.getElementById('phone-number').textContent = data.phonenumber || 'N/A';
+                    document.getElementById('membership-status').textContent = data.membershipstatus || 'N/A';
+                } else {
+                    console.log('No data available');
+                }
+            }).catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+        } else {
+            window.location.href = 'signIn.html'; // Redirect to login
+        }
+    });
+
+    
+</script>
+
+    
+</body>
+</html>
+
+<style>
+
+.container {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 80px;
+}
+
+@media (max-width: 991px) {
+  .container {
+      padding: 0 20px;
+  }
+}
+
+.header {
+  align-self: stretch;
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+@media (max-width: 991px) {
+  .header {
+      max-width: 100%;
+      margin-right: 9px;
+      flex-wrap: wrap;
+  }
+}
+
+.logo {
+  color: #426b1f;
+  letter-spacing: -0.32px;
+  flex-grow: 1;
+  margin: auto 0;
+  font: 500 32px/100% Newsreader, sans-serif;
+  text-decoration: none; /* Remove default underline */
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 16px;
+  color: #000;
+  font-weight: 400;
+  text-align: center;
+  line-height: 130%;
+}
+
+@media (max-width: 991px) {
+  .nav {
+      flex-wrap: wrap;
+  }
+}
+
+.nav-link {
+  font-family: Inter, sans-serif;
+  align-self: stretch;
+  margin: auto 0;
+  text-decoration: none; /* remove default underline */
+}
+
+.nav-button {
+  font-family: Inter, sans-serif;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #426b1f;
+  align-self: stretch;
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 17px 20px;
+  text-decoration: none; /* no underline */
+}
+
+
+.profile-title {
+  color: #000;
+  font: italic 400 64px/120% Newsreader, -apple-system, Roboto, Helvetica, sans-serif;
+  letter-spacing: -1.28px;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .profile-title {
+      font-size: 40px;
+      max-width: 100%;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+.my-profile {
+  background-color: #fff;
+  width: 100%;
+  padding: 50px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+  color: #426b1f;
+  margin-bottom: 30px;  
+}
+
+.account-info {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.info-item {
+  width: 50%;
+  margin-bottom: 20px;
+}
+
+.info-label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: #426b1f;
+  margin-bottom: 5px;
+}
+
+.info-value {
+  display: block;
+  font-size: 16px;
+  color: #333;
+}
+
+
+
+.edit-button {
+  display: block;
+  background-color: #979393;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 30px;
+  display: inline-block;
+}
+
+.edit-button:hover {
+    background-color: #426b1f;
+}
+
+#appointment {
+  background-color: #426b1f;
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+#appointment:hover {
+  background-color:rgb(10, 160, 10);
+}
+
+</style>
