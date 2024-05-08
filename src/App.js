@@ -1,9 +1,9 @@
-import { Outlet } from 'react-router-dom';
-
+import React from 'react'
+import Personal from './comp/personal'
 function App() {
   return (
     <div className="App">
-      <Outlet/>
+      <Personal />
     </div>
   );
 }

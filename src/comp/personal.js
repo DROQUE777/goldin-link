@@ -1,5 +1,5 @@
+import React, {useState} from 'react'
 
-import Personal from './comp/personal'
 const Personal = () => {
  const [user, setUser] = useState( {
     Name: '', Date_Of_Birth: '', Gender: '', Social_Security: '', Phone: '', Email: '', Emergency_Contact: ''
@@ -10,7 +10,6 @@ let name, value
     name = e.target.name;
     value = e.target.value;
     setUser({...user, [name]: value});
-    console
  }
 
  const getdata = async (e) => {
@@ -19,13 +18,13 @@ let name, value
     const options = {
         method: 'POST',
         headers: {
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'aplication/json'
         },
         body: JSON.stringify({
             Name, Date_Of_Birth, Gender, Social_Security, Phone, Email, Emergency_Contact
         })
     }
-    const res = await fetch('https://golden-link-69f12-default-rtdb.firebaseio.com/UserData.json',
+    const res = await fetch('https://golden-link-69f12-default-rtdb.firebaseio.com/Patient.json',
         options
     )
     if(res) {
@@ -36,18 +35,39 @@ let name, value
     }
  }
 
+ const customStyle1 = {
+    maxwidth: '600px',
+    margin: '20px auto',
+    padding: '90px',
+    border: '1px solid #426b1f',
+    borderRadius: '8px',
+    boxShadow: '0 0 10px rgba(0,0,0,0.1)'
+};
+ const customStyle2 = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '10px auto',
+    font: '600 36px/130% Inter, sans-serif'
+ }
+ const customStyle3 = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '6px auto'
+ }
+
  return (
-    
+<>
   <body>
-  <main class="container" style="max-width: 600px; margin: 20px auto; padding: 90px; border: 1px solid #426b1f;
-  border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-      <h1 style="display: flex; justify-content: center; align-items:center; margin: 10px auto; font: 600 36px/130% Inter, sans-serif;">Patient Information</h1>
-      <form method="POST" id="personal-info-id"> <h3 style="display: flex; justify-content: center; align-items:center; margin: 6px auto;">Personal Information</h3>
+  <main class="container" style={customStyle1}>
+      <h1 style={customStyle2}>Patient Information</h1>
+      <form method="POST" id="personal-info-id"> <h3 style={customStyle3}>Personal Information</h3>
           <label for="name" class="name-label" ><strong>Patient's Name</strong></label>
           <textarea onChange={data} value={user.Name} name='Name' autoComplete="off" rows="1" id="name" class="name-select"></textarea>
 
           <label for="dob" class="dob-label"><strong>Data of Birth</strong></label>
-          <textarea onChange={data} value={user.Date_of_Birth} name='Date_Of_Birth' autoComplete='off' id="dob" class="dob-select"></textarea>
+          <textarea onChange={data} value={user.Date_Of_Birth} name='Date_Of_Birth' autoComplete='off' id="dob" class="dob-select"></textarea>
 
           <label for="gender" class="gender-label"><strong>Gender</strong></label>
           <select onChange={data} value={user.Gender} name='Gender' autoComplete='off' id="gender" class="gender-select">
@@ -71,14 +91,14 @@ let name, value
       </form>
 
       <div class="two-buttons">
-        <a href="medicalInfo.html"><button id="btn1">Next</button></a>
-        <button onClick={getdata} id="save-info">Save</button>
+        <a href="medicalInfo.html"><button onClick={getdata} id="btn1">Next</button></a>
+        <button id="save-info">Save</button>
       </div>
       
   </main>
   <script src="patientInfo.js"></script>
 </body>
-
+</>
  )
 }
 
