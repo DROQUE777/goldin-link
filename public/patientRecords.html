@@ -13,6 +13,7 @@
     border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
      <nav class="add-bar">
         <a href="personalInfo.html" id="login-link"><button id="add-button">Add New Profile</button></a>
+        <a href="admin_interface.html" id="login-link"><button id="add-button">Home</button></a>
     </nav>
 
     <script>
@@ -49,16 +50,43 @@
         </thead>
         <tbody>
             <tr id="patient-info-id">
-                <td><a style="text-decoration:none; color: black;" href="patientInfo.html">John Doe</a></td>
+                <td><a style="text-decoration:none; color: black;" href="patientInfo.html">Mary Jones</a></td>
                 <td>123-456-7890</td>
-                <td>john.doe@example.com</td>
+                <td>fakeeamil@gmail1.com</td>
                 <td>Diego</td>
             </tr>
             <tr>
-                <td id="status-link"><a style="text-decoration:none; color: black;" href="admin_status.html">John Doe</a></td>
-                <td>123-456-7890</td>
-                <td>john.doe@example.com</td>
+                <td id="status-link"><a style="text-decoration:none; color: black;" href="admin_status.html">Marcos Mendoza</a></td>
+                <td>212-222-3948</td>
+                <td>billy@gmail.com</td>
+                <td>Billy</a></td>
+            </tr>
+
+            <tr id="patient-info-id">
+                <td><a style="text-decoration:none; color: black;" href="patientInfo.html">Aidan Cendejas</a></td>
+                <td>909-323-3332</td>
+                <td>Michael@gmail.com</td>
+                <td>Michael</td>
+            </tr>
+            <tr>
+                <td id="status-link"><a style="text-decoration:none; color: black;" href="admin_status.html">Alejandro Rubio</a></td>
+                <td>909-455-3975</td>
+                <td>Kent@gmail.com</td>
+                <td>Kent</a></td>
+            </tr>
+
+            <tr id="patient-info-id">
+                <td><a style="text-decoration:none; color: black;" href="patientInfo.html">Nicholas Miranda</a></td>
+                <td>203-323-2222</td>
+                <td>Billy2@gmail.com</td>
+                <td>Billy</td>
+            </tr>
+            <tr>
+                <td id="status-link"><a style="text-decoration:none; color: black;" href="patientInfo.html">Diego Roque</a></td>
+                <td>951-823-3227</td>
+                <td>diegoroque047@gmail.com</td>
                 <td>Diego</a></td>
+
             </tr>
             <!-- Add more rows as needed -->
         </tbody>
@@ -98,7 +126,7 @@
 .contact-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin: auto;
 }
 
 .contact-table th, 
@@ -121,13 +149,14 @@
 }
 
   body {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('https://img.huffingtonpost.com/asset/5bb675e7250000940039a5e0.jpeg?ops=scalefit_720_noupscale');
-  background-size: 100%;
-  background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('https://img.huffingtonpost.com/asset/5bb675e7250000940039a5e0.jpeg?ops=scalefit_720_noupscale');
   background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
   }
 
   .container {
     background-color: white;
+    height: 100%;
   }
 </style>

@@ -3,17 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Patient Information</title>
-    <link rel="stylesheet" href="personalInfo.css"/>  
-  </head> 
-    <script src="personal.js"></script>
-    <script src="patientInfo.js"></script>
-</html>
+    <link rel="stylesheet" href="info.css"/>  
+    <title>Display Patient Information</title>
+  </head>
 
-<style>
+  <style>
+    
   a {
     text-decoration: none;
+    color: white;
+  }
 
+  form {
+    width: 80%;
+    margin: auto;
   }
 
   .two-buttons {
@@ -37,7 +40,6 @@
     cursor: pointer;
 
   }
-
   label {
     display: inline-block; 
     margin-bottom: 13px;
@@ -57,16 +59,6 @@
     margin: 6px auto;
   }
 
-  select{
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 10px;
-    min-height: 10px;
-    margin: 6px auto;
-  }
-
   body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('https://img.huffingtonpost.com/asset/5bb675e7250000940039a5e0.jpeg?ops=scalefit_720_noupscale');
   background-size: cover;
@@ -75,5 +67,430 @@
 
   .container {
     background-color: white;
+    max-width: 850px;
+    margin: 20px auto;
+    border: 1px solid #426b1f;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1) 
   }
-</style>
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    font: 600 36px/130% Inter, sans-serif
+  }
+
+  h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 6px auto
+  }
+  </style>
+
+  <body>
+    <main class="container">
+        <h1>Patient Information</h1>
+        
+        <form method="POST" id="personal-info-id"> <h3>Personal Information</h3>
+          <label><strong>Caregiver</strong></label>
+          <textarea  rows="1" id="caregiver"></textarea>
+            <label for="name" class="name-label" ><strong>Patient's Name</strong></label>
+            <textarea rows="1" id="name" class="name-select"></textarea>
+  
+            <label for="dob" class="dob-label"><strong>Data of Birth</strong></label>
+            <textarea onChange={data} value={user.Date_Of_Birth} name='Date_Of_Birth' autoComplete='off' id="dob" class="dob-select"></textarea>
+  
+            <label for="gender" class="gender-label"><strong>Gender</strong></label>
+            <select onChange={data} value={user.Gender} name='Gender' autoComplete='off' id="gender" class="gender-select">
+                <option value="">Select an option</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+                <option value="Prefer Not To Say">Prefer Not To Say</option>
+            </select>
+            <label for="social-security" class="social-security-label"><strong>Social Securuty</strong></label>
+            <textarea onChange={data} value={user.Social_Security} name='Social_Security' autoComplete='off' id="social-security" class="social-security-label"></textarea>
+  
+            <label for="contact" class="contact-label"><strong>Contact</strong></label>
+            <textarea onChange={data} value={user.Phone} name='Phone' autoComplete='off' placeholder="XXX-XXX-XXXX" id="contact" class="phone-select"></textarea>
+            
+            <label for="email" class="email-label"><strong>Email</strong></label>
+            <textarea onChange={data} value={user.Email} name='Email' autoComplete='off' placeholder="YourEmail@gmail.com" id="email" class="email-select"></textarea>
+  
+            <label for="emergency-contact" class="emergency-contact-label"><strong>Emergency Contact</strong></label>
+            <textarea value={user.Emergency_Contact} name='Emergency_Contact' autoComplete='off' placeholder="XXX-XXX-XXXX" id="emergency-contact" class="ephone-select"></textarea>
+        </form>
+        
+    </main>
+  
+      <main class="container">
+          <h1>Patient Information</h1>
+          <form method='POST' id="medical"> <h3>Medical Information</h3>
+              <label for="allergies" class="allergies-label"><strong>Medical Allergies</strong></label>
+              <textarea value={user.Medical_Allergies} name="Medical_Allergies" autoComplete="off" placeholder="Insulin, Penicillin..." id="medical-allergies" class="allergies-select"></textarea>
+  
+              <label for="chronic-conditions" class="chronic-conditions-label"><strong>Chronic Conditions</strong></label>
+              <textarea onChange={data} value={user.Chronic_Conditions} name="Chronic_Conditions" autoComplete="off" placeholder="Heart Disease, Lung Cancer..." id="chronic-conditions" class="chronic-conditions-select"></textarea>
+  
+              <label for="past-surgeries" class="past-surgeries-label"><strong>Past Surgeries</strong></label>
+              <textarea onChange={data} value={user.Past_Surgeries} name="Past_Surgeries" autoComplete='off' placeholder="Appendectomy, Cataract Surgery..." id="past-surgeries" class="past-surgeries-select"></textarea>
+  
+              <label for="medication" class="medication-label"><strong>Medication</strong></label>
+              <textarea onChange={data} value={user.Medication} name="Medication" autoComplete='off' placeholder="Lisinopril, Levothyroxine..." id="medication" class="medication-label"></textarea>
+  
+              <label for="care-preferences" class="care-preferences-label"><strong>Care Preferences</strong></label>
+              <textarea onChange={data} value={user.Care_Preferences} name='Care_Preferences' autoComplete='off' placeholder="Care Preferences (dietary, activities, etc.)" id="care-preferences" class="preferences-select"></textarea>
+  
+              <label for="mobile-assistance" class="mobile-assistance-label" ><strong>Mobile Assistance</strong></label>
+              <textarea onChange={data} value={user.Mobile_Assistance} name='Mobile_Assistance' autoComplete='off' placeholder="Walking, getting out of bed..." id="mobile-assistance" class="mobile-assistance-select"></textarea>
+  
+              <label for="daily-assistance" class="daily-assistance-label"><strong>Assistance with Daily Activites</strong></label>
+              <textarea onChange={data} value={user.Daily_Assistance} name='Daily_Assistance' autoComplete='off' placeholder="Bathing, dressing, eating, etc..." id="daily-assistance" class="daily-assistance-select"></textarea>
+  
+              <label for="medical-equipment" class="medical-equipment-label"><strong>Special Medical Equipment Needs</strong></label>
+              <textarea onChange={data} value={user.Special_Medical_Equipment} name='Special_Medical_Equipment' autoComplete='off' placeholder="E.G., oxygen, catheter..." id="medical-equipment" class="medical-equipment-select"></textarea>
+  
+  
+              <label for="healthcare-provider" class="healthcare-provider-label"><strong>Healthcare Provider</strong></label>
+              <textarea onChange={data} value={user.Healthcare_Provider} name='Healthcare_Provider' autoComplete='off' placeholder="Dr. Harleen Quinzel" id="healthcare-provider" class="healthcare-provider-select"></textarea>
+  
+              <label for="physician-phone" class="physician-phone-label"><strong>Physician's Phone</strong></label>
+              <textarea onChange={data} value={user.Physician_Phone} name='Physician_Phone' autoComplete='off' placeholder="XXX-XXX-XXXX" id="physician-phone" class="physician-phone-select"></textarea>
+  
+              <label for="physician-email" class="physician-email-label"><strong>Physician's Email</strong></label>
+              <textarea onChange={data} value={user.Physician_Email} name='Physician_Email' autoComplete='off' placeholder="PhakeEmail@gmail.com" id="physician-email" class="physician-email-select"></textarea>
+  
+              <label for="specialist" class="specialist-label"><strong>Specialist Doctor</strong></label>
+              <textarea onChange={data} value={user.Specialist_Doctor} name='Specialist_Doctor' autoComplete='off' placeholder="Dr. Strange" id="specialist" class="specialist-select"></textarea>
+  
+              <label for="therapist" class="therapist-label"><strong>Therapist</strong></label>
+              <textarea onChange={data} value={user.Therapist} name='Therapist' autoComplete='off' placeholder="Dr. Phil" id="therapist" class="therapist-select"></textarea>
+  
+              <label for="pharmacy" class="pharmacy-label"><strong>Pharmacy Information</strong></label>
+              <textarea onChange={data} value={user.Pharmacy_Information} name='Pharmacy_Information' autoComplete='off' placeholder="PharmX: Your prescription solution. Fast, friendly, and convenient service for all your medication needs. Your health is our priority.
+              " id="pharmacy" class="pharmacy-select"></textarea>
+  
+          </form>
+      </main>
+    
+      <main class="container">
+          <h1>Patient Information</h1>
+          <form id="insurance"> <h3>Insurance and Billing Information</h3>
+              <label for="insurance-details" class="insurance-details-label"><strong>Insurance Provider Details</strong></label>
+              <textarea onChange={data} value={user.Insurance_Provider_Details} name='Insurance_Provider_Details' autoComplete='off' id="insurance-details" class="insurance-details-select"></textarea>
+  
+              <label for="billing-info" class="billing-info-label"><strong>Billing Information</strong></label>
+              <textarea onChange={data} value={user.Billing_Information} name='Billing_Information' autoComplete='off' id="billing-info" class="billing-info-select"></textarea>
+  
+              <label for="medicare-medicaid" class="medicare-medicaid-label"><strong>Medicare/Medicaid Information</strong></label>
+              <textarea onChange={data} value={user.Medicare_Information} name="Medicare_Information" autoComplete='off' id="medicare-medicaid" class="medicare-medicaid-select"></textarea>
+          </form>
+      </main>
+  
+   
+  
+      <main class="container">
+          <h1>Patient Information</h1>
+          <form id="nutritional"> <h3>Nutritional Information</h3>
+              <label for="dietary-preferences" class="dietary-preferences-label"><strong>Dietary Preferances</strong></label>
+              <textarea onChange = {data} value={user.Dietary_Preferences} name='Dietary_Preferences' autoComplete='off' id="dietary-preferences" class="dietary-preferences-select"></textarea>
+  
+              <label for="food-allergies" class="food-allergies-label"><strong>Food Allergies</strong></label>
+              <textarea onChange={data} value={user.Food_Allergies} name='Food_Allergies' autoComplete='off' id="food-allergies" class="food-allergies-select"></textarea>
+  
+              <label for="meal-plan" class="meal-plan-label"><strong>Meal Plan</strong></label>
+              <textarea  onChange={data} value={user.Meal_Plan} name='Meal_Plan' autoComplete='off' id="meal-plan" class="meal-plan-select" placeholder="e.g., diabetic diet, low-sodium diet"></textarea>
+  
+              <h3>Activity and Social Engagement</h3>
+              <label for="hobbies-interests" class="hobbies-interests-label"><strong>Hobbies and Interests</strong></label>
+              <textarea onChange={data} value={user.Hobbies_And_Interests} name="Hobbies_And_Interests" autoComplete="off" id="hobbies-interests" class="hobbies-interests-select"></textarea>
+  
+              <label for="social-history" class="social-history-label"><strong>Social History</strong></label>
+              <textarea onChange={data} value={user.Social_History} name='Social_History' autoComplete='off' id="social-history" placeholder="marital status" class="marital-status-label"></textarea>
+  
+              <textarea onChange={data} value={user.Children} name='Children' autoComplete='off' id="children" placeholder="children" class="children-select"></textarea>
+              <textarea onChange={data} value={user.Occupation} name='Occupation' autoComplete='off' id="occupation" placeholder="occupation" class="occupation-select"></textarea>
+              
+              
+               <div class="two-buttons">
+                <button type="submit" id="save-info"><a href="patientRecords.html">Create Profile</a></button>
+              </div>
+              </form>
+      </main>
+
+      <script>
+    
+     document.getElementById('inputForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get input values
+      //Personal
+var name = document.getElementById('name').value;
+let dob = document.getElementById('dob');
+let gender = document.getElementById('gender');
+let socialSecurity = document.getElementById('social-security');
+let phone = document.getElementById('contact');
+var email = document.getElementById('email').value;
+let emergency_Contact = document.getElementById('emergency-contact');
+
+//Medical
+let medicalAllergies = document.getElementById('medical-allergies');
+let chronicConditions = document.getElementById('chronic-conditions');
+let pastSurgeries = document.getElementById('past-surgeries');
+let medication = document.getElementById('medication');
+let carePreferences = document.getElementById('care-preferences');
+let mobileAssistance = document.getElementById('mobile-assistance');
+let dailyAssistance = document.getElementById('daily-assistance');
+let medicalEquipment = document.getElementById('medical-equipment');
+let healthcareProvider = document.getElementById('healthcare-provider');
+let physicianPhone = document.getElementById('physician-phone');
+let physicianEmail = document.getElementById('physician-email');
+let specialist = document.getElementById('specialist');
+let therapist = document.getElementById('therapist');
+let pharmacy = document.getElementById('pharmacy');
+
+//Insurance
+let insuranceDetails = document.getElementById('insurance-details');
+let billingInfo = document.getElementById('billing-info');
+let medicareMedicaid = document.getElementById('medicare-medicaid');
+
+//nutritional/social
+let dietary = document.getElementById('dietary-preferences');
+let foodAllergies = document.getElementById('food-allergies');
+let mealPlan = document.getElementById('meal-plan');
+let hobbies = document.getElementById('hobbies-interests');
+let socialHistory = document.getElementById('social-history');
+let children = document.getElementById('children');
+let occupation = document.getElementById('occupation');
+
+
+      // Store input values in localStorage
+      localStorage.setItem('name', name);
+      localStorage.setItem('email', email);
+
+      // Redirect to another HTML page
+      window.location.href = 'patientInfo.html';
+    });
+  </script>
+
+      </script>
+
+
+      <script type="module">
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyCAWkfkLakdoJR3OzJ5dtWeSczI8v8WnXM",
+authDomain: "golden-link-69f12.firebaseapp.com",
+databaseURL: "https://golden-link-69f12-default-rtdb.firebaseio.com",
+projectId: "golden-link-69f12",
+storageBucket: "golden-link-69f12.appspot.com",
+messagingSenderId: "446825364339",
+appId: "1:446825364339:web:431633896a6548a1e8e306",
+measurementId: "G-RN7XTFM3G9"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+import {getDatabase, ref, child, get, set, update, remove} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+
+const db = getDatabase();
+//Personal
+let name = document.getElementById('name');
+let dob = document.getElementById('dob');
+let gender = document.getElementById('gender');
+let socialSecurity = document.getElementById('social-security');
+let phone = document.getElementById('contact');
+let email = document.getElementById('email');
+let emergency_Contact = document.getElementById('emergency-contact');
+
+//Medical
+let medicalAllergies = document.getElementById('medical-allergies');
+let chronicConditions = document.getElementById('chronic-conditions');
+let pastSurgeries = document.getElementById('past-surgeries');
+let medication = document.getElementById('medication');
+let carePreferences = document.getElementById('care-preferences');
+let mobileAssistance = document.getElementById('mobile-assistance');
+let dailyAssistance = document.getElementById('daily-assistance');
+let medicalEquipment = document.getElementById('medical-equipment');
+let healthcareProvider = document.getElementById('healthcare-provider');
+let physicianPhone = document.getElementById('physician-phone');
+let physicianEmail = document.getElementById('physician-email');
+let specialist = document.getElementById('specialist');
+let therapist = document.getElementById('therapist');
+let pharmacy = document.getElementById('pharmacy');
+
+//Insurance
+let insuranceDetails = document.getElementById('insurance-details');
+let billingInfo = document.getElementById('billing-info');
+let medicareMedicaid = document.getElementById('medicare-medicaid');
+
+//nutritional/social
+let dietary = document.getElementById('dietary-preferences');
+let foodAllergies = document.getElementById('food-allergies');
+let mealPlan = document.getElementById('meal-plan');
+let hobbies = document.getElementById('hobbies-interests');
+let socialHistory = document.getElementById('social-history');
+let children = document.getElementById('children');
+let occupation = document.getElementById('occupation');
+
+//Add Data to firebase
+function AddAllData() {
+set(ref(db, 'Patients/' + name.value), {
+//personal 
+nameofpatient: name.value,
+Dob: dob.value,
+Gender: gender,
+ss: socialSecurity,
+Phone: phone,
+Email: email,
+eContact: emergency_Contact,
+
+//medical
+MedicalAllergies: medicalAllergies,
+ChronicConditions: chronicConditions,
+PastSurgeries: pastSurgeries,
+Medication: medication,
+CarePreferences: carePreferences,
+Mobile: mobileAssistance,
+Daily: dailyAssistance,
+MedidcalE: medicalEquipment,
+healthcareP: healthcareProvider,
+pPhone: physicianPhone,
+pEmail: physicianEmail,
+Specialist: specialist,
+Therapist: therapist,
+Pharmacy: pharmacy,
+
+//INsurance
+iDetails: insuranceDetails,
+bInfo: billingInfo,
+mM: medicareMedicaid,
+
+//nutr. social
+Dietary: dietary,
+fAllergies: foodAllergies,
+mPlan: mealPlan,
+Hobbies: hobbies,
+sHistory: socialHistory,
+Children: children,
+Occupation: occupation
+
+}) .then(()=> {
+alert("Data Added Successfully")
+})
+.catch((error)=> {
+alert("Unsuccessful");
+console.log(error)
+})
+}
+
+//Retrieve Data from Firebase
+function getPersonalData(){
+const dbRef = ref(db);
+get(child(dbRef, 'Patients/' + name.value)).then((snapshot)=>{
+if(snapshot.exist()){
+name.value = snapshot.val().nameofpatient;
+dob.value = snapshot.val().Dob;
+gender.value = snapshot.val().Gender;
+socialSecurity.value = snapshot.val().ss;
+phone.value = snapshot.val().Phone;
+email.value = snapshot.val().Email;
+emergency_Contact.value = snapshot.val().eContact
+}
+
+else {
+alert("Patient does not exist");
+}
+})
+.catch((error)=> {
+console.log(error);
+})
+}
+
+//retrieve medical
+function getMedicalData(){
+const dbRef = ref(db);
+get(child(dbRef, 'Patients/' + name.value)).then((snapshot)=>{
+if(snapshot.exist()){
+medicalAllergies.value = snapshot.val().MedicalAllergies;
+chronicConditions.value = snapshot.val().ChronicConditions;
+pastSurgeries.value = snapshot.val().PastSurgeries;
+medication.value = snapshot.val().Medication;
+carePreferences.value = snapshot.val().CarePreferences;
+mobileAssistance.value = snapshot.val().Mobile;
+dailyAssistance.value = snapshot.val().Daily
+medicalEquipment.value = snapshot.val().MedidcalE
+healthcareProvider.value = snapshot.val().healthcareP
+physicianPhone.value = snapshot.val().pPhone
+physicianEmail.value = snapshot.val().pEmail
+specialist.value = snapshot.val().Specialist
+therapist.value = snapshot.val().Therapist
+pharmacy.value = snapshot.val().Pharmacy
+
+}
+
+else {
+alert("Patient does not exist");
+}
+})
+.catch((error)=> {
+console.log(error);
+})
+}
+
+//Retrieve Insurance Data from FireBase
+function getInsurancelData(){
+const dbRef = ref(db);
+get(child(dbRef, 'Patients/' + name.value)).then((snapshot)=>{
+if(snapshot.exist()){
+insuranceDetails.value = snapshot.val().iDetails;
+billingInfo.value = snapshot.val().bInfo;
+medicareMedicaid.value = snapshot.val().mM;
+}
+else {
+alert("Patient does not exist");
+}
+})
+.catch((error)=> {
+console.log(error);
+})
+}
+
+//get Nutr, social Data
+function getNSData(){
+const dbRef = ref(db);
+get(child(dbRef, 'Patients/' + name.value)).then((snapshot)=>{
+if(snapshot.exist()){
+dietary.value = snapshot.val().Dietary;
+foodAllergies.value = snapshot.val().fAllergies;
+mealPlan.value = snapshot.val().mPlan;
+hobbies.value = snapshot.val().Hobbies;
+socialHistory.value = snapshot.val().sHistory;
+children.value = snapshot.val().Children;
+occupation.value = snapshot.val().Occupation;
+}
+
+else {
+alert("Patient does not exist");
+}
+})
+.catch((error)=> {
+console.log(error);
+})
+
+}
+
+let btn = document.getElementById("save-info")
+btn.addEventListener('click', AddAllData)
+
+     </script>
+    </body>
+</html>
