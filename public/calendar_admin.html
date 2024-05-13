@@ -4,21 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Calendar</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        .wrapper {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto; 
+            box-sizing: border-box; 
+        }
+
+        @media (max-width: 991px) {
+            .wrapper {
+                padding: 0;
+            }
+        }
+
+        .header {
+            align-self: stretch;
+            display: flex;
+            justify-content: center; 
+            width: 100%;
+            gap: 20px;
+        }
+
+        @media (max-width: 991px) {
+            .header {
+                max-width: 100%;
+                margin-right: 9px;
+                flex-wrap: wrap;
+            }
+        }
+
+        .logo {
+            color: #426b1f;
+            letter-spacing: -0.32px;
+            flex-grow: 1;
+            margin: auto 0;
+            font: 500 32px/100% Newsreader, sans-serif;
+            text-decoration: none; 
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 16px;
+            color: #000;
+            font-weight: 400;
+            text-align: center;
+            line-height: 130%;
+        }
+
+        @media (max-width: 991px) {
+            .nav {
+                flex-wrap: wrap;
+            }
+        }
+
+        .nav-link {
+            font-family: Inter, sans-serif;
+            align-self: stretch;
+            margin: auto 0;
+            text-decoration: none; 
+        }
+
+        .nav-button {
+            font-family: Inter, sans-serif;
+            justify-content: center;
+            border-radius: 8px;
+            background-color: #426b1f;
+            align-self: stretch;
+            color: #fff;
+            font-weight: 600;
+            white-space: nowrap;
+            padding: 17px 20px;
+            text-decoration: none; 
+        }
+
         .container {
             display: flex;
             justify-content: space-between;
-            padding: 20px;
+            width: 100%; 
+            box-sizing: border-box; 
         }
 
         .calendar-container {
             width: 70%;
+            overflow-x: auto; 
         }
 
         .form-container {
             width: 30%;
-            padding-left: 20px;
+            max-width: 400px; 
+            padding-right: none;
+            background-color: #f0f3f5; 
+            padding: 20px; 
+            font-family: Arial, sans-serif;
         }
 
         body, h1, button {
@@ -29,13 +112,20 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
+            min-width: 750px; 
+        }
+        @media (max-width: 768px) {
+            .calendar {
+                min-width: auto;
+            }
         }
 
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
             background-color: #f8f8f8;
             border-bottom: 1px solid #ccc;
         }
@@ -54,7 +144,7 @@
         }
 
         .days div {
-            position: relative; /* Relative positioning for + more link */
+            position: relative; 
             padding: 10px;
             border-right: 1px solid #eee;
             border-bottom: 1px solid #eee;
@@ -63,16 +153,16 @@
             flex-direction: column;
             justify-content: start;
             align-items: center;
-            height: 150px; /* Increased height for day cells */
-            overflow: hidden; /* Ensures content doesn't overflow */
+            height: 150px; 
+            overflow: hidden; 
         }
 
         .event {
-            width: calc(100% - 20px); /* Set width to match day cell and adjust for padding */
-            height: 30px; /* Fixed height for event cells */
-            max-height: 10px; /* Minimum height for event cells */
+            width: calc(100% - 20px); 
+            height: 30px; 
+            max-height: 10px; 
             min-height: 10px;
-            line-height: 30px; /* Set line-height to match the fixed height */
+            line-height: 30px; 
             background-color: #f3f4f6;
             margin: 2px;
             padding: 2px 5px;
@@ -81,13 +171,13 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            display: flex; /* Added */
-            justify-content: center; /* Added */
-            align-items: center; /* Added */
+            display: flex;
+            justify-content: center; 
+            align-items: center;
         }
 
         .more-events {
-            display: none; /* Initially hide the "+ more" link */
+            display: none; 
             cursor: pointer;
             color: blue;
             text-decoration: underline;
@@ -98,7 +188,7 @@
         }
 
         .days div:hover .more-events {
-            display: block; /* Show "+ more" link on hover */
+            display: block; 
         }
 
         #eventPopup {
@@ -126,43 +216,15 @@
             z-index: 999;
         }
 
-        /* Added styles for the form container */
-        .form-container {
-            /* display: flex;
-            flex-direction: column;
-            align-items: flex-start; */
-            width: 30%;
-            background-color: #f0f3f5; /* Light blue background */
-            padding: 20px;
-            font-family: Arial, sans-serif;
-        }
-
         .form-container h2 {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
-
-        /* .form-container form {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        } */
 
         .form-container label {
-            /* display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            width: 100%; */
             display: block;
             margin-bottom: 10px;
         }
 
-        /* .form-container input {
-            width: 60%;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        } */
         .form-container input,
         .form-container textarea {
             width: 100%;
@@ -179,9 +241,38 @@
             border-radius: 3px;
             cursor: pointer;
         }
+
+        .delete-btn {
+            color: red;
+            cursor: pointer;
+        }
+
+        .event-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .event-text {
+            flex-grow: 1;
+            word-break: break-all;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
+    <div class="wrapper">
+        <header class="header">
+            <a href="index.html" class="logo">Golden Link</a>
+            <nav class="nav">
+              <a href="calendar_admin.html" class="nav-link">Calendar</a>
+              <a href="#" class="nav-link">Activities</a>
+              <a href="#" class="nav-link">Meals</a>
+              <a href="#" class="nav-link">My profile</a>
+              <a href="reservation_reception.html" class="nav-button">Appointment</a>
+            </nav>
+        </header>
     <div class="container">
         <div class="calendar-container">
             <div class="calendar">
@@ -225,6 +316,7 @@
             </form>
         </div>
     </div>
+</div> 
     <div id="overlay" onclick="closePopup()"></div>
     <div id="eventPopup"></div>
 
@@ -232,13 +324,9 @@
         let currentDate = new Date();
     
         const events = {
-            '2024-04-01': ["Stretching with Empower Me Wellness", "Matinee Movie", "More events", "Another event", "New event"],
-            '2024-04-02': ["Zumba Gold with Perla", "The CC Corner- Coffee, Daily Chronicle", "More events"],
-            '2024-04-03': ["National Walking Day", "Chair Aerobics with Fit Group"],
-            '2024-04-04': ["Communion", "Chair Tai Chi"],
-            '2024-05-01': ["Chair Aerobics with Fit Group", "Errand Wednesday"],
-            '2024-05-02': ["Communion", "Chair Tai Chi"],
-            '2024-05-03': ["Yoga", "Table Talk w/ Coffee & Doughnuts"],
+            '2024-05-01': ["10:00 Aerobics"],
+            '2024-05-02': ["10:00 Tai Chi"],
+            '2024-05-03': ["10:00 Yoga", "14:00 Boba"],
         };
     
         function setupCalendar() {
@@ -274,14 +362,14 @@
                 const dayEvents = events[dayString] || [];
                 dayCell.innerText = day;
                 let displayedEvents = 0;
-                dayEvents.forEach((event, index) => {
-                    if (index < 3) { // Display up to 3 events
-                        const eventDiv = document.createElement('div');
-                        eventDiv.className = 'event';
-                        eventDiv.innerText = event;
-                        dayCell.appendChild(eventDiv);
-                        displayedEvents++;
-                    }
+
+                dayEvents.forEach((event) => {
+                    const [time, title] = event.split(' '); // Split time and title
+                    const eventDiv = document.createElement('div');
+                    eventDiv.className = 'event';
+                    eventDiv.innerText = `${time} ${title}`; // Display only time and title
+                    dayCell.appendChild(eventDiv);
+                    displayedEvents++;
                 });
                 if (dayEvents.length > 3) {
                     const moreEventsLink = document.createElement('div');
@@ -290,7 +378,7 @@
                     moreEventsLink.onclick = () => showEventsPopup(dayEvents);
                     dayCell.appendChild(moreEventsLink);
                 }
-                dayCell.onclick = () => showEventsPopup(dayEvents);
+                dayCell.onclick = () => showEventsPopup(dayEvents, dayString);
                 calendarDays.appendChild(dayCell);
             }
         }
@@ -300,14 +388,15 @@
             setupCalendar();
         }
     
-        function showEventsPopup(events) {
+        function showEventsPopup(events, date) {
             const popup = document.getElementById('eventPopup');
             const overlay = document.getElementById('overlay');
-            popup.innerHTML = '<h2>Events</h2>' + events.map(event => `<div>${event}</div>`).join('');
+            const dateStr = new Date(date).toLocaleDateString('ja-JP', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            popup.innerHTML = `<h2>Events: ${dateStr}</h2>` + events.map(event => `<div class="event-row"><span class="event-text">${event}</span><span class="delete-btn" onclick="deleteEvent('${date}', '${event}')">&#10005;</span></div>`).join('');
             popup.style.display = 'block';
             overlay.style.display = 'block';
         }
-    
+
         function closePopup() {
             const popup = document.getElementById('eventPopup');
             const overlay = document.getElementById('overlay');
@@ -330,7 +419,6 @@
                 events[date] = [];
             }
     
-            //const eventDetails = `${title} (${time}) - ${details}`;
             const eventDetails = `${time} ${title} - ${details}`;
             events[date].push(eventDetails);
             setupCalendar();
@@ -341,8 +429,25 @@
             titleInput.value = '';
             detailsInput.value = '';
         }
+
+        function deleteEvent(date, event) {
+           events[date] = events[date].filter(e => e !== event);
+            setupCalendar();
+            closePopup();
+        }
+
+        //cut long title and last would be ...
+        function truncateText(text, maxLength) {
+            maxLength = 8; // set maxLength to 8
+            if (text.length > maxLength) {
+                return `${text.slice(0, maxLength)}...`;
+            }
+            return text;
+        }
+
+
     
         document.addEventListener('DOMContentLoaded', setupCalendar);
     </script>
-    </body>
-    </html>
+</body>
+</html>
